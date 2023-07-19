@@ -10,30 +10,38 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
     using SafeMath for uint256;
     
-    uint256 public constant MAX_SUPPLY = 24 * 10**6 * 10**18; // 24 million POW tokens.
-    uint256 public constant MAX_MINT_AMOUNT = 5000 * 10**18; // The cap is set to 5000 POW tokens.
-    uint256 public HALVING_SUPPLY = MAX_SUPPLY / 2; // The supply at which rewards are halved.
-    uint256 public CURRENT_MAX_REWARD_AMOUNT = MAX_MINT_AMOUNT; // The max supply of POW tokens that can be rewarded
+    uint256 public constant MAX_SUPPLY = 42 * 10**6 * 10**18; // 42 million POW tokens.
+    uint256 public constant PREMINT_SUPPLY = 18 * 10**6 * 10**18; // 18 million POW tokens preminted for the owner.
+    uint256 public constant IN_GAME_SUPPLY = MAX_SUPPLY - PREMINT_SUPPLY; // 24 million POW tokens allocated to fitness quests completion, in game events
+    uint256 public halvingSupply = IN_GAME_SUPPLY / 2; // The supply at which rewards are halved.
+    uint256 public currentMaxRewardAmount = 5000 * 10**18; // The max supply of POW tokens that can be rewarded
 
-    constructor() ERC20("ProofOfWorkout", "POW") {}
+    constructor() ERC20("ProofOfWorkout", "POW") {
+        _mint(msg.sender, PREMINT_SUPPLY); 
+    }
     
-    function mint(address to, uint256 amount) public onlyOwner {
-        require(amount <= CURRENT_MAX_REWARD_AMOUNT, "Cannot mint more than current reward per transaction");
+    function _mintFromQuestCompletion(address to, uint256 amount) internal {
+        require(amount <= currentMaxRewardAmount, "Cannot mint more than current reward per transaction");
         require(totalSupply() + amount <= MAX_SUPPLY, "Max supply exceeded");
         
         _mint(to, amount);
         
-        // Halve the reward if the total supply has passed the halving threshold
-        if(totalSupply() >= HALVING_SUPPLY){
-            CURRENT_MAX_REWARD_AMOUNT = CURRENT_MAX_REWARD_AMOUNT.div(2);
-            HALVING_SUPPLY = HALVING_SUPPLY.div(2); 
+        // Halve the reward if the total supply of the in game supply has passed the halving threshold
+        if(totalSupply() - PREMINT_SUPPLY >= halvingSupply){
+            currentMaxRewardAmount = currentMaxRewardAmount.div(2);
+            halvingSupply = halvingSupply.div(2); 
         }
     }
 
-    function burnFromFailure(address from, uint256 amount) public onlyOwner {
+    function _burnFromFailure(address from) internal {
+        uint256 userBalance = balanceOf(from);
         // Burn 5% of tokens upon quest failure
-        uint256 burnAmount = (amount * 5).div(100);
-        _burn(from, burnAmount);
+        uint256 burnAmount = (userBalance * 5).div(100);
+        _burn(from, burnAmount);  
+    }
+
+    function getBalanceOfAddress(address walletAddress) public view returns (uint256) {
+        return balanceOf(walletAddress);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
