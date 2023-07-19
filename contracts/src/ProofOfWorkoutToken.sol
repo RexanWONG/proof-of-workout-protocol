@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Sepolia : 0xB72DFE29B3Cc5f79c5dc64732cd3A0eeBFAC25Ec
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -9,7 +10,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
     using SafeMath for uint256;
-    
+
     uint256 public constant MAX_SUPPLY = 42 * 10**6 * 10**18; // 42 million POW tokens.
     uint256 public constant PREMINT_SUPPLY = 18 * 10**6 * 10**18; // 18 million POW tokens preminted for the owner.
     uint256 public constant IN_GAME_SUPPLY = MAX_SUPPLY - PREMINT_SUPPLY; // 24 million POW tokens allocated to fitness quests completion, in game events
