@@ -72,7 +72,7 @@ contract QuestManager is ERC1155, Ownable {
         uint256 _questDifficulty,
         uint256 _maxQuestDuration,
         string memory _metadataURI 
-    ) public {
+    ) public {  
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
 
@@ -90,7 +90,7 @@ contract QuestManager is ERC1155, Ownable {
         newQuest.metadataURI = _metadataURI; 
 
         _setTokenURI(tokenId, _metadataURI);
-    }
+    } 
 
     function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal virtual {
         require(exists(tokenId), "ERC1155Metadata: URI set of nonexistent token");
