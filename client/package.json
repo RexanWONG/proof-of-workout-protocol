@@ -11,6 +11,7 @@
     "deploy": "next build && next export && npx thirdweb@latest upload out"
   },
   "dependencies": {
+    "@metamask/sdk": "^0.5.6",
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
     "ethers": "^5",
@@ -21,8 +22,11 @@
   "devDependencies": {
     "@types/node": "^18.11.11",
     "@types/react": "^18",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
     "typescript": "^4.9.4"
   }
 }
