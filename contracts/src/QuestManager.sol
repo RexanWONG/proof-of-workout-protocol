@@ -12,7 +12,7 @@ contract QuestManager is ERC1155, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC1155("") {}
+    constructor() ERC1155("") {} 
 
     uint256 public numOfQuestChallenges;
 
@@ -46,14 +46,6 @@ contract QuestManager is ERC1155, Ownable {
     ) payable public {
         Quest storage quest = quests[_questTokenId];
         require(msg.value >= quest.minStakeAmount, "You must stake enough ether to begin this quest");
-    
-        uint256 serviceFee = (msg.value.mul(3)).div(100);
-        (bool sentToOwner, ) = owner().call{value: serviceFee}("");
-        require(sentToOwner, "Failed to send Ether to the owner");
-
-        uint256 questCreatorFee = (msg.value.mul(4)).div(100);
-        (bool sentToQuestCreator, ) = quest.creator.call{value: questCreatorFee}("");
-        require(sentToQuestCreator, "Failed to send Ether to the quest creator");
 
         QuestChallenges storage newQuestChallenge = questChallenges[numOfQuestChallenges];
 
