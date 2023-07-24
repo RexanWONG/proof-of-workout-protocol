@@ -2,43 +2,124 @@ const axios = require('axios');
 const express = require('express');
 const app = express();
 
+const dotenv = require('dotenv');
+dotenv.config()
+
 const port = process.env.PORT || 3333;
 const apiBaseUrl = 'https://www.strava.com/api/v3/';
-const endpoints = {
-  athletes: '/athletes',
-  stats: '/stats',
-  oauthToken: '/oauth/token',
-};
 
-const CLIENT_ID = 110847;
-const CLIENT_SECRET = '84443ddcbf9186e188d3e83ab728fa71b37f4f36';
-const REFRESH_TOKEN = '5a1e54818159be2ad85f4ffc7f8914a00c7f4696';
-const USER_ID = 66742430;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-// Define /strava-stats endpoint
-app.get('/strava-stats', async (req, res) => {
+const getAccessToken = async (AUTHORIZATION_CODE) => {
   try {
-    // Get the access token
-    const tokenResponse = await axios.post(`${apiBaseUrl}${endpoints.oauthToken}`, {
+    const tokenResponse = await axios.post('https://www.strava.com/oauth/token', {
       client_id: CLIENT_ID,
       client_secret: CLIENT_SECRET,
-      grant_type: 'refresh_token',
-      refresh_token: REFRESH_TOKEN,
+      code: AUTHORIZATION_CODE,
+      grant_type: 'authorization_code',
     });
 
-    const ACCESS_TOKEN = tokenResponse.data.access_token;
+    return tokenResponse.data.access_token;
+  } catch (error) {
+    console.error(error.response.data);
+  }
+}
+
+app.get('/user-id', async (req, res) => {
+  try {
+    const AUTHORIZATION_CODE = req.query.code;
+
+    if (!AUTHORIZATION_CODE) {
+      return res.status(400).json({
+        message: 'Authorization code is required as a query parameter'
+      });
+    }
+    
+    const ACCESS_TOKEN = await getAccessToken(AUTHORIZATION_CODE)
     const apiHeaders = { headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` } };
 
-    // Get the athlete data
-    const athleteResponse = await axios.get(`${apiBaseUrl}/athletes/${USER_ID}`, apiHeaders);
+    const response = await axios.get(`${apiBaseUrl}/athlete`, apiHeaders);
 
     res.json({
-      data: athleteResponse.data.id
+      id: response.data.id
     });
+
   } catch (error) {
-    console.error('Error in /strava-stats endpoint:', error.response.data);
+    console.error('Error in /user-id endpoint:', error.response.data);
     res.status(500).json({
-      message: 'Failed to get Strava stats'
+      message: 'Failed to get User ID'
+    });
+  }
+})
+
+app.get('/user-activities', async (req, res) => {
+  try {   
+    const AUTHORIZATION_CODE = req.query.code;
+    const AFTER_TIMESTAMP = req.query.after;
+
+    if (!AUTHORIZATION_CODE) {
+      return res.status(400).json({
+        message: 'Authorization code is required as a query parameter'
+      });
+    } 
+    
+    if (!AFTER_TIMESTAMP) {
+      return res.status(400).json({
+        message: 'After timestamp is required as a query parameter'
+      });
+    } 
+
+    const ACCESS_TOKEN = await getAccessToken(AUTHORIZATION_CODE)
+    const apiHeaders = { headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` } };
+
+    const response = await axios.get(`${apiBaseUrl}athlete/activities?after=${AFTER_TIMESTAMP}`, apiHeaders);
+    
+    res.json({
+      activities: response.data
+    });
+
+  } catch (error) {
+    console.error('Error in /strava-athlete endpoint:', error.response.data);
+    res.status(500).json({
+      message: 'Failed to get Strava athlete data'
+    });
+  }
+});
+
+app.get('/activity-duration', async (req, res) => {
+  try {
+    const ACTIVITY_ID = req.query.id;
+    const AUTHORIZATION_CODE = req.query.code;
+
+    if (!AUTHORIZATION_CODE) {
+      return res.status(400).json({
+        message: 'Authorization code is required as a query parameter'
+      });
+    } else if (!ACTIVITY_ID) {
+      return res.status(400).json({
+        message: 'Activity ID is required as a query parameter'
+      });
+    }
+
+    const ACCESS_TOKEN = await getAccessToken(AUTHORIZATION_CODE)
+    const apiHeaders = { headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` } };
+
+    const response = await axios.get(`${apiBaseUrl}activities/${ACTIVITY_ID} `, apiHeaders);
+
+    const filteredResponse = {
+      athlete: response.data.athlete.id,
+      moving_time: response.data.moving_time
+    };
+    
+    res.json({
+      activity_duration: filteredResponse
+    });
+    
+  } catch (error) {
+    console.error('Error in /activity-duration endpoint:', error.response.data);
+    res.status(500).json({
+      message: 'Failed to get activity duration data'
     });
   }
 });
