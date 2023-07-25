@@ -1,5 +1,6 @@
 const axios = require('axios');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 const dotenv = require('dotenv');
@@ -42,7 +43,8 @@ app.get('/user-id', async (req, res) => {
     const response = await axios.get(`${apiBaseUrl}/athlete`, apiHeaders);
 
     res.json({
-      id: response.data.id
+      id: response.data.id,
+      name: response.data.username
     });
 
   } catch (error) {
@@ -124,7 +126,22 @@ app.get('/activity-duration', async (req, res) => {
   }
 });
 
+const allowedOrigins = ['http://localhost:3000/', 'http://localhost:3000/dashboard'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if(!origin) return callback(null, true);
+    
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
+}); 

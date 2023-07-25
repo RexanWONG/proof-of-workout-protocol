@@ -10,13 +10,9 @@ import { Sepolia } from "@thirdweb-dev/chains"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    
       <ThirdwebProvider activeChain={Sepolia}>
-        <MetaMaskContextProvider>
-        <Component {...pageProps} />
-        </MetaMaskContextProvider>
+          <Component {...pageProps} />
       </ThirdwebProvider>
-   
     
   );
 }

@@ -1,0 +1,1632 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "accounts",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "walletAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "isRegistered",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "stravaId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_walletAddress",
+          "type": "address"
+        }
+      ],
+      "name": "checkIfAccountIsRegistered",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_walletAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getRegisteredAccountDetails",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_walletAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_stravaId",
+          "type": "uint256"
+        }
+      ],
+      "name": "registerAccount",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x608060405234801561001057600080fd5b50610315806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806358cbe353146100515780635e5c06e214610066578063709e036b146100cd578063f4e32a451461010f575b600080fd5b61006461005f366004610293565b610152565b005b6100a36100743660046102bd565b600060208190529081526040902080546001909101546001600160a01b03821691600160a01b900460ff169083565b604080516001600160a01b0390941684529115156020840152908201526060015b60405180910390f35b6100a36100db3660046102bd565b6001600160a01b039081166000908152602081905260409020805460019091015491811692600160a01b90910460ff169190565b61014261011d3660046102bd565b6001600160a01b0316600090815260208190526040902054600160a01b900460ff1690565b60405190151581526020016100c4565b6001600160a01b03821660008181526020819052604090209033146101ee5760405162461bcd60e51b815260206004820152604160248201527f596f75206d75737420626520746865206f776e6572206f66207468652077616c60448201527f6c6574206164647265737320746f2063616c6c20746869732066756e6374696f6064820152603760f91b608482015260a4015b60405180910390fd5b8054600160a01b900460ff16156102515760405162461bcd60e51b815260206004820152602160248201527f57616c6c6574206164647265737320616c7265616479207265676973746572656044820152601960fa1b60648201526084016101e5565b805460ff60a01b1933166001600160a81b031990911617600160a01b1781556001015550565b80356001600160a01b038116811461028e57600080fd5b919050565b600080604083850312156102a657600080fd5b6102af83610277565b946020939093013593505050565b6000602082840312156102cf57600080fd5b6102d882610277565b939250505056fea26469706673582212200b3dde2b73e6c47c5d5532b6a7869a738e78f74b3d4b646dfdeb672e574324b164736f6c63430008110033",
+    "sourceMap": "57:1227:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806358cbe353146100515780635e5c06e214610066578063709e036b146100cd578063f4e32a451461010f575b600080fd5b61006461005f366004610293565b610152565b005b6100a36100743660046102bd565b600060208190529081526040902080546001909101546001600160a01b03821691600160a01b900460ff169083565b604080516001600160a01b0390941684529115156020840152908201526060015b60405180910390f35b6100a36100db3660046102bd565b6001600160a01b039081166000908152602081905260409020805460019091015491811692600160a01b90910460ff169190565b61014261011d3660046102bd565b6001600160a01b0316600090815260208190526040902054600160a01b900460ff1690565b60405190151581526020016100c4565b6001600160a01b03821660008181526020819052604090209033146101ee5760405162461bcd60e51b815260206004820152604160248201527f596f75206d75737420626520746865206f776e6572206f66207468652077616c60448201527f6c6574206164647265737320746f2063616c6c20746869732066756e6374696f6064820152603760f91b608482015260a4015b60405180910390fd5b8054600160a01b900460ff16156102515760405162461bcd60e51b815260206004820152602160248201527f57616c6c6574206164647265737320616c7265616479207265676973746572656044820152601960fa1b60648201526084016101e5565b805460ff60a01b1933166001600160a81b031990911617600160a01b1781556001015550565b80356001600160a01b038116811461028e57600080fd5b919050565b600080604083850312156102a657600080fd5b6102af83610277565b946020939093013593505050565b6000602082840312156102cf57600080fd5b6102d882610277565b939250505056fea26469706673582212200b3dde2b73e6c47c5d5532b6a7869a738e78f74b3d4b646dfdeb672e574324b164736f6c63430008110033",
+    "sourceMap": "57:1227:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;250:528;;;;;;:::i;:::-;;:::i;:::-;;199:44;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;199:44:0;;;-1:-1:-1;;;199:44:0;;;;;;;;;;;-1:-1:-1;;;;;856:32:1;;;838:51;;932:14;;925:22;920:2;905:18;;898:50;964:18;;;957:34;826:2;811:18;199:44:0;;;;;;;;982:300;;;;;;:::i;:::-;-1:-1:-1;;;;;1124:24:0;;;1064:7;1124:24;;;;;;;;;;1180:21;;;1249:16;;;;1180:21;;;;-1:-1:-1;;;1215:20:0;;;;;;1249:16;982:300;785:191;;;;;;:::i;:::-;-1:-1:-1;;;;;908:24:0;866:4;908:24;;;;;;;;;;949:20;-1:-1:-1;;;949:20:0;;;;;785:191;;;;1167:14:1;;1160:22;1142:41;;1130:2;1115:18;785:191:0;1002:187:1;250:528:0;-1:-1:-1;;;;;374:24:0;;335:36;374:24;;;;;;;;;;;434:10;416:28;408:106;;;;-1:-1:-1;;;408:106:0;;1396:2:1;408:106:0;;;1378:21:1;1435:2;1415:18;;;1408:30;1474:34;1454:18;;;1447:62;1545:34;1525:18;;;1518:62;-1:-1:-1;;;1596:19:1;;;1589:32;1638:19;;408:106:0;;;;;;;;;532:33;;-1:-1:-1;;;532:33:0;;;;:42;524:88;;;;-1:-1:-1;;;524:88:0;;1870:2:1;524:88:0;;;1852:21:1;1909:2;1889:18;;;1882:30;1948:34;1928:18;;;1921:62;-1:-1:-1;;;1999:18:1;;;1992:31;2040:19;;524:88:0;1668:397:1;524:88:0;623:47;;-1:-1:-1;;;;660:10:0;680:40;-1:-1:-1;;;;;;680:40:0;;;;-1:-1:-1;;;680:40:0;;;623:47;730:29;:41;-1:-1:-1;250:528:0:o;14:173:1:-;82:20;;-1:-1:-1;;;;;131:31:1;;121:42;;111:70;;177:1;174;167:12;111:70;14:173;;;:::o;192:254::-;260:6;268;321:2;309:9;300:7;296:23;292:32;289:52;;;337:1;334;327:12;289:52;360:29;379:9;360:29;:::i;:::-;350:39;436:2;421:18;;;;408:32;;-1:-1:-1;;;192:254:1:o;451:186::-;510:6;563:2;551:9;542:7;538:23;534:32;531:52;;;579:1;576;569:12;531:52;602:29;621:9;602:29;:::i;:::-;592:39;451:186;-1:-1:-1;;;451:186:1:o",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "accounts(address)": "5e5c06e2",
+    "checkIfAccountIsRegistered(address)": "f4e32a45",
+    "getRegisteredAccountDetails(address)": "709e036b",
+    "registerAccount(address,uint256)": "58cbe353"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"accounts\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"walletAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isRegistered\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"stravaId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_walletAddress\",\"type\":\"address\"}],\"name\":\"checkIfAccountIsRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_walletAddress\",\"type\":\"address\"}],\"name\":\"getRegisteredAccountDetails\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_walletAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_stravaId\",\"type\":\"uint256\"}],\"name\":\"registerAccount\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/AccountManager.sol\":\"AccountManager\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin/=lib/openzeppelin-contracts/\",\":@reference/=lib/reference/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\"]},\"sources\":{\"src/AccountManager.sol\":{\"keccak256\":\"0x9bb7f07f100a6a7e05abdc27492720261e5887753ad095671349be72fb01169b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bcf5446e71b1e195af3857fa9e196c64825d988791c2f29f8a0c4811d1f0ec29\",\"dweb:/ipfs/QmbNRrheNo5ujYUgLwb6NCWeQ85rbZZV4MvttKo481jUS6\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "accounts",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "walletAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "isRegistered",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "stravaId",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_walletAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "checkIfAccountIsRegistered",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_walletAddress",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getRegisteredAccountDetails",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_walletAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_stravaId",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "registerAccount"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin/=lib/openzeppelin-contracts/",
+        ":@reference/=lib/reference/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/AccountManager.sol": "AccountManager"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/AccountManager.sol": {
+        "keccak256": "0x9bb7f07f100a6a7e05abdc27492720261e5887753ad095671349be72fb01169b",
+        "urls": [
+          "bzz-raw://bcf5446e71b1e195af3857fa9e196c64825d988791c2f29f8a0c4811d1f0ec29",
+          "dweb:/ipfs/QmbNRrheNo5ujYUgLwb6NCWeQ85rbZZV4MvttKo481jUS6"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/AccountManager.sol",
+    "id": 110,
+    "exportedSymbols": {
+      "AccountManager": [
+        109
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:1252:0",
+    "nodes": [
+      {
+        "id": 1,
+        "nodeType": "PragmaDirective",
+        "src": "32:23:0",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".17"
+        ]
+      },
+      {
+        "id": 109,
+        "nodeType": "ContractDefinition",
+        "src": "57:1227:0",
+        "nodes": [
+          {
+            "id": 8,
+            "nodeType": "StructDefinition",
+            "src": "87:106:0",
+            "nodes": [],
+            "canonicalName": "AccountManager.Account",
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "mutability": "mutable",
+                "name": "walletAddress",
+                "nameLocation": "120:13:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "112:21:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "112:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "mutability": "mutable",
+                "name": "isRegistered",
+                "nameLocation": "148:12:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "143:17:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "143:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "mutability": "mutable",
+                "name": "stravaId",
+                "nameLocation": "178:8:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "170:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "170:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Account",
+            "nameLocation": "94:7:0",
+            "scope": 109,
+            "visibility": "public"
+          },
+          {
+            "id": 13,
+            "nodeType": "VariableDeclaration",
+            "src": "199:44:0",
+            "nodes": [],
+            "constant": false,
+            "functionSelector": "5e5c06e2",
+            "mutability": "mutable",
+            "name": "accounts",
+            "nameLocation": "235:8:0",
+            "scope": 109,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Account_$8_storage_$",
+              "typeString": "mapping(address => struct AccountManager.Account)"
+            },
+            "typeName": {
+              "id": 12,
+              "keyType": {
+                "id": 9,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "208:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "199:28:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Account_$8_storage_$",
+                "typeString": "mapping(address => struct AccountManager.Account)"
+              },
+              "valueType": {
+                "id": 11,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 10,
+                  "name": "Account",
+                  "nameLocations": [
+                    "219:7:0"
+                  ],
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 8,
+                  "src": "219:7:0"
+                },
+                "referencedDeclaration": 8,
+                "src": "219:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                  "typeString": "struct AccountManager.Account"
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "id": 63,
+            "nodeType": "FunctionDefinition",
+            "src": "250:528:0",
+            "nodes": [],
+            "body": {
+              "id": 62,
+              "nodeType": "Block",
+              "src": "325:453:0",
+              "nodes": [],
+              "statements": [
+                {
+                  "assignments": [
+                    22
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 22,
+                      "mutability": "mutable",
+                      "name": "newRegisteredAccount",
+                      "nameLocation": "351:20:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 62,
+                      "src": "335:36:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                        "typeString": "struct AccountManager.Account"
+                      },
+                      "typeName": {
+                        "id": 21,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 20,
+                          "name": "Account",
+                          "nameLocations": [
+                            "335:7:0"
+                          ],
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 8,
+                          "src": "335:7:0"
+                        },
+                        "referencedDeclaration": 8,
+                        "src": "335:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                          "typeString": "struct AccountManager.Account"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 26,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 23,
+                      "name": "accounts",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 13,
+                      "src": "374:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Account_$8_storage_$",
+                        "typeString": "mapping(address => struct AccountManager.Account storage ref)"
+                      }
+                    },
+                    "id": 25,
+                    "indexExpression": {
+                      "id": 24,
+                      "name": "_walletAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15,
+                      "src": "383:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "374:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Account_$8_storage",
+                      "typeString": "struct AccountManager.Account storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "335:63:0"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 31,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 28,
+                          "name": "_walletAddress",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 15,
+                          "src": "416:14:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 29,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -15,
+                            "src": "434:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 30,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "438:6:0",
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "434:10:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "416:28:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "596f75206d75737420626520746865206f776e6572206f66207468652077616c6c6574206164647265737320746f2063616c6c20746869732066756e6374696f6e",
+                        "id": 32,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "446:67:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_18558de1abd85aaaa0e3aaedc50b8449aabd160a9ea2b4051689f8f498bc9bd1",
+                          "typeString": "literal_string \"You must be the owner of the wallet address to call this function\""
+                        },
+                        "value": "You must be the owner of the wallet address to call this function"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_18558de1abd85aaaa0e3aaedc50b8449aabd160a9ea2b4051689f8f498bc9bd1",
+                          "typeString": "literal_string \"You must be the owner of the wallet address to call this function\""
+                        }
+                      ],
+                      "id": 27,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "408:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 33,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "408:106:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 34,
+                  "nodeType": "ExpressionStatement",
+                  "src": "408:106:0"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 39,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 36,
+                            "name": "newRegisteredAccount",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 22,
+                            "src": "532:20:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                              "typeString": "struct AccountManager.Account storage pointer"
+                            }
+                          },
+                          "id": 37,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "553:12:0",
+                          "memberName": "isRegistered",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5,
+                          "src": "532:33:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "hexValue": "66616c7365",
+                          "id": 38,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "569:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "false"
+                        },
+                        "src": "532:42:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "57616c6c6574206164647265737320616c72656164792072656769737465726564",
+                        "id": 40,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "576:35:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_5ca2febf2c6baa1ee1326bcaf0faaee5dea4381b0d52be3fd9fd03306145faa7",
+                          "typeString": "literal_string \"Wallet address already registered\""
+                        },
+                        "value": "Wallet address already registered"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_5ca2febf2c6baa1ee1326bcaf0faaee5dea4381b0d52be3fd9fd03306145faa7",
+                          "typeString": "literal_string \"Wallet address already registered\""
+                        }
+                      ],
+                      "id": 35,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "524:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 41,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "524:88:0",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 42,
+                  "nodeType": "ExpressionStatement",
+                  "src": "524:88:0"
+                },
+                {
+                  "expression": {
+                    "id": 48,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 43,
+                        "name": "newRegisteredAccount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 22,
+                        "src": "623:20:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                          "typeString": "struct AccountManager.Account storage pointer"
+                        }
+                      },
+                      "id": 45,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "644:13:0",
+                      "memberName": "walletAddress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3,
+                      "src": "623:34:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 46,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -15,
+                        "src": "660:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 47,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "664:6:0",
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "660:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "623:47:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 49,
+                  "nodeType": "ExpressionStatement",
+                  "src": "623:47:0"
+                },
+                {
+                  "expression": {
+                    "id": 54,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 50,
+                        "name": "newRegisteredAccount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 22,
+                        "src": "680:20:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                          "typeString": "struct AccountManager.Account storage pointer"
+                        }
+                      },
+                      "id": 52,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "701:12:0",
+                      "memberName": "isRegistered",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5,
+                      "src": "680:33:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 53,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "716:4:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "680:40:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 55,
+                  "nodeType": "ExpressionStatement",
+                  "src": "680:40:0"
+                },
+                {
+                  "expression": {
+                    "id": 60,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 56,
+                        "name": "newRegisteredAccount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 22,
+                        "src": "730:20:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                          "typeString": "struct AccountManager.Account storage pointer"
+                        }
+                      },
+                      "id": 58,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberLocation": "751:8:0",
+                      "memberName": "stravaId",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 7,
+                      "src": "730:29:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 59,
+                      "name": "_stravaId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17,
+                      "src": "762:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "730:41:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 61,
+                  "nodeType": "ExpressionStatement",
+                  "src": "730:41:0"
+                }
+              ]
+            },
+            "functionSelector": "58cbe353",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerAccount",
+            "nameLocation": "259:15:0",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15,
+                  "mutability": "mutable",
+                  "name": "_walletAddress",
+                  "nameLocation": "283:14:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 63,
+                  "src": "275:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "275:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17,
+                  "mutability": "mutable",
+                  "name": "_stravaId",
+                  "nameLocation": "307:9:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 63,
+                  "src": "299:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 16,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "274:43:0"
+            },
+            "returnParameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "325:0:0"
+            },
+            "scope": 109,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "id": 81,
+            "nodeType": "FunctionDefinition",
+            "src": "785:191:0",
+            "nodes": [],
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "872:104:0",
+              "nodes": [],
+              "statements": [
+                {
+                  "assignments": [
+                    72
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 72,
+                      "mutability": "mutable",
+                      "name": "account",
+                      "nameLocation": "898:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 80,
+                      "src": "882:23:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                        "typeString": "struct AccountManager.Account"
+                      },
+                      "typeName": {
+                        "id": 71,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 70,
+                          "name": "Account",
+                          "nameLocations": [
+                            "882:7:0"
+                          ],
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 8,
+                          "src": "882:7:0"
+                        },
+                        "referencedDeclaration": 8,
+                        "src": "882:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                          "typeString": "struct AccountManager.Account"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 76,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 73,
+                      "name": "accounts",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 13,
+                      "src": "908:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Account_$8_storage_$",
+                        "typeString": "mapping(address => struct AccountManager.Account storage ref)"
+                      }
+                    },
+                    "id": 75,
+                    "indexExpression": {
+                      "id": 74,
+                      "name": "_walletAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "917:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "908:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Account_$8_storage",
+                      "typeString": "struct AccountManager.Account storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "882:50:0"
+                },
+                {
+                  "expression": {
+                    "expression": {
+                      "id": 77,
+                      "name": "account",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 72,
+                      "src": "949:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                        "typeString": "struct AccountManager.Account storage pointer"
+                      }
+                    },
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberLocation": "957:12:0",
+                    "memberName": "isRegistered",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 5,
+                    "src": "949:20:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 69,
+                  "id": 79,
+                  "nodeType": "Return",
+                  "src": "942:27:0"
+                }
+              ]
+            },
+            "functionSelector": "f4e32a45",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkIfAccountIsRegistered",
+            "nameLocation": "794:26:0",
+            "parameters": {
+              "id": 66,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 65,
+                  "mutability": "mutable",
+                  "name": "_walletAddress",
+                  "nameLocation": "829:14:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "821:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 64,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "821:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "820:24:0"
+            },
+            "returnParameters": {
+              "id": 69,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 68,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "866:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 67,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "866:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "865:6:0"
+            },
+            "scope": 109,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "id": 108,
+            "nodeType": "FunctionDefinition",
+            "src": "982:300:0",
+            "nodes": [],
+            "body": {
+              "id": 107,
+              "nodeType": "Block",
+              "src": "1088:194:0",
+              "nodes": [],
+              "statements": [
+                {
+                  "assignments": [
+                    94
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 94,
+                      "mutability": "mutable",
+                      "name": "account",
+                      "nameLocation": "1114:7:0",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 107,
+                      "src": "1098:23:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                        "typeString": "struct AccountManager.Account"
+                      },
+                      "typeName": {
+                        "id": 93,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 92,
+                          "name": "Account",
+                          "nameLocations": [
+                            "1098:7:0"
+                          ],
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 8,
+                          "src": "1098:7:0"
+                        },
+                        "referencedDeclaration": 8,
+                        "src": "1098:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                          "typeString": "struct AccountManager.Account"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 98,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 95,
+                      "name": "accounts",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 13,
+                      "src": "1124:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Account_$8_storage_$",
+                        "typeString": "mapping(address => struct AccountManager.Account storage ref)"
+                      }
+                    },
+                    "id": 97,
+                    "indexExpression": {
+                      "id": 96,
+                      "name": "_walletAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 83,
+                      "src": "1133:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1124:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Account_$8_storage",
+                      "typeString": "struct AccountManager.Account storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1098:50:0"
+                },
+                {
+                  "expression": {
+                    "components": [
+                      {
+                        "expression": {
+                          "id": 99,
+                          "name": "account",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 94,
+                          "src": "1180:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                            "typeString": "struct AccountManager.Account storage pointer"
+                          }
+                        },
+                        "id": 100,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1188:13:0",
+                        "memberName": "walletAddress",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 3,
+                        "src": "1180:21:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 101,
+                          "name": "account",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 94,
+                          "src": "1215:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                            "typeString": "struct AccountManager.Account storage pointer"
+                          }
+                        },
+                        "id": 102,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1223:12:0",
+                        "memberName": "isRegistered",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 5,
+                        "src": "1215:20:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 103,
+                          "name": "account",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 94,
+                          "src": "1249:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Account_$8_storage_ptr",
+                            "typeString": "struct AccountManager.Account storage pointer"
+                          }
+                        },
+                        "id": 104,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1257:8:0",
+                        "memberName": "stravaId",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 7,
+                        "src": "1249:16:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "id": 105,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1166:109:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_address_$_t_bool_$_t_uint256_$",
+                      "typeString": "tuple(address,bool,uint256)"
+                    }
+                  },
+                  "functionReturnParameters": 91,
+                  "id": 106,
+                  "nodeType": "Return",
+                  "src": "1159:116:0"
+                }
+              ]
+            },
+            "functionSelector": "709e036b",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRegisteredAccountDetails",
+            "nameLocation": "991:27:0",
+            "parameters": {
+              "id": 84,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 83,
+                  "mutability": "mutable",
+                  "name": "_walletAddress",
+                  "nameLocation": "1027:14:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 108,
+                  "src": "1019:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 82,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1019:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1018:24:0"
+            },
+            "returnParameters": {
+              "id": 91,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 86,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 108,
+                  "src": "1064:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 85,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1064:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 108,
+                  "src": "1073:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 87,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1073:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 90,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 108,
+                  "src": "1079:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 89,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1079:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:24:0"
+            },
+            "scope": 109,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "AccountManager",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          109
+        ],
+        "name": "AccountManager",
+        "nameLocation": "66:14:0",
+        "scope": 110,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 0
+}
