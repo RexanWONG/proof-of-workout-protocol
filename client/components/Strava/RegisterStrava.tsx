@@ -2,12 +2,13 @@ import { useEffect, useState, useRef } from 'react';
 import truncateEthAddress from 'truncate-eth-address';
 
 import Loading from '../Loading';
+import RegisterUser from '../RegisterUser';
 
-interface RegisterUserProps {
+interface RegisterStravaProps {
     address: string;
 }
 
-const RegisterUser:React.FC<RegisterUserProps> = ({ address }) => {
+const RegisterStrava:React.FC<RegisterStravaProps> = ({ address }) => {
     const STRAVA_CLIENT_ID = process.env.NEXT_STRAVA_CLIENT_ID
     const STRAVA_OAUTH_LINK = `https://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3000/dashboard&approval_prompt=force&scope=activity:read`
 
@@ -62,6 +63,11 @@ const RegisterUser:React.FC<RegisterUserProps> = ({ address }) => {
                   <h1 className='text-gray-400 text-2xl'>Your Strava Username</h1>
                   <p className='text-white text-4xl'>{userName}</p>
                 </div>
+
+                <RegisterUser 
+                  address={String(address)}
+                  stravaId={Number(userId)}
+                />
               </div>
             }
           </div>
@@ -69,4 +75,4 @@ const RegisterUser:React.FC<RegisterUserProps> = ({ address }) => {
     )
 }
 
-export default RegisterUser
+export default RegisterStrava

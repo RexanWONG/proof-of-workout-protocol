@@ -22,7 +22,7 @@ contract AccountManager {
     }
  
     function checkIfAccountIsRegistered(address _walletAddress) public view returns (bool) {
-        Account storage account = accounts[_walletAddress];
+        Account storage account = accounts[_walletAddress]; 
         return account.isRegistered;
     }
 

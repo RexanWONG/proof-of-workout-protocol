@@ -3,7 +3,7 @@ import { useAddress, useContractRead, useContract } from "@thirdweb-dev/react";
 import { abi, contractAddress } from '../constants/AccountManager/accountManager';
 
 import Navbar from '../components/Navbar';
-import RegisterUser from '../components/Strava/RegisterUser';
+import RegisterStrava from '../components/Strava/RegisterStrava';
 
 const Dashboard = () => {  
   const address = useAddress();
@@ -18,10 +18,12 @@ const Dashboard = () => {
       {isAccountRegistered ? (
         <h1>hello</h1>
       ) : (
-        <RegisterUser address={String(address)}/>
+        <RegisterStrava address={String(address)}/>
       )}
     </div>
   )
 }
 
 export default Dashboard
+
+
