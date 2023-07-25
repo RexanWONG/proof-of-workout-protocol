@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0xD1C2bC232963430a40572F57024E444ffC10b666
+// Sepolia : 0xf1A51D384aB338C5e2870200E1db04FFcB41364c
 pragma solidity 0.8.17;
 
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+
 contract AccountManager {
+    using SafeMath for uint256;
+
     struct Account {
         address walletAddress;
         bool isRegistered;
@@ -10,15 +14,24 @@ contract AccountManager {
     }
 
     mapping (address => Account) public accounts;
+    uint256[] public registeredStravaIDs;
 
     function registerAccount(address _walletAddress, uint256 _stravaId) public {
         Account storage newRegisteredAccount = accounts[_walletAddress];
         require(_walletAddress == msg.sender, "You must be the owner of the wallet address to call this function");
         require(newRegisteredAccount.isRegistered == false, "Wallet address already registered");
 
+        for (uint256 i = 0 ; i < registeredStravaIDs.length ; ++i) {
+            if (registeredStravaIDs[i] == _stravaId) {
+                revert("Strava ID already registered with a different wallet address");
+            }
+        }
+
         newRegisteredAccount.walletAddress = msg.sender;
         newRegisteredAccount.isRegistered = true;
         newRegisteredAccount.stravaId = _stravaId;
+
+        registeredStravaIDs.push(_stravaId);
     }
  
     function checkIfAccountIsRegistered(address _walletAddress) public view returns (bool) {

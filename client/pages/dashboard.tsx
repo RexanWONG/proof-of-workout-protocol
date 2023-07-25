@@ -16,7 +16,7 @@ const Dashboard = () => {
       <Navbar linkHref={'/create'} linkText={'Create quest'}/>
 
       {isAccountRegistered ? (
-        <h1>hello</h1>
+        <h1 className="text-white">You are registered!</h1>
       ) : (
         <RegisterStrava address={String(address)}/>
       )}

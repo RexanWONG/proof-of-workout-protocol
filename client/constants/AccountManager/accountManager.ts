@@ -1,5 +1,5 @@
-import abi_data from './AccountManager.json' 
+import abi_data from '../../../contracts/out/AccountManager.sol/AccountManager.json'; 
 
-export const abi = abi_data.abi
-export const contractAddress = '0xD1C2bC232963430a40572F57024E444ffC10b666'
+export const abi = abi_data.abi;
+export const contractAddress = '0xf1A51D384aB338C5e2870200E1db04FFcB41364c';
 
