@@ -19,7 +19,7 @@ const RegisterUser: React.FC<RegisterUserProps> = ({ address, stravaId }) => {
           alert("Account Registered!") 
           router.push('/dashboard')
         } catch (error) {
-          console.error(error)
+          alert(error)
         }
     }
     

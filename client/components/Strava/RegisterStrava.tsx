@@ -27,13 +27,18 @@ const RegisterStrava:React.FC<RegisterStravaProps> = ({ address }) => {
     }, []);
 
     const getIdAndName = async (code: string) => {
-        setIsLoading(true);
-        const query = await fetch(`/api/proxy?code=${code}`)
-        const response = await query.json()
-        setUserId(response.id)
-        setUserName(response.name)
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const query = await fetch(`/api/proxy?code=${code}`)
+          const response = await query.json()
+          setUserId(response.id)
+          setUserName(response.name)
+          setIsLoading(false);
+        } catch (error) { 
+          alert(error)
+        }
     }
+
     return (
         <div className='flex flex-col items-center justify-center mt-32'>
           <h1 className='text-white text-4xl'>

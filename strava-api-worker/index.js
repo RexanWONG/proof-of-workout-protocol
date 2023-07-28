@@ -94,7 +94,7 @@ app.get('/activity-duration', async (req, res) => {
     const ACTIVITY_ID = req.query.id;
     const AUTHORIZATION_CODE = req.query.code;
 
-    if (!AUTHORIZATION_CODE) {
+    if (!AUTHORIZATION_CODE) {  
       return res.status(400).json({
         message: 'Authorization code is required as a query parameter'
       });
