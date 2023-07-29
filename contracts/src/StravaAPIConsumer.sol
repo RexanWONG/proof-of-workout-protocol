@@ -69,6 +69,11 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
         movingTime = _movingTime;
     }
 
+    function getDuration(uint256 _activityId) internal view returns (uint256) {
+        return activityDurations[_activityId];
+    }
+
+
     function returnApiUrl(uint256 _activityId, string memory _authCode) public view returns (string memory) {
         return string(
             abi.encodePacked(
