@@ -7,12 +7,17 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
+import "./StravaAPIConsumer.sol";
+
 contract QuestManager is ERC1155, Ownable {
+    APIConsumer apiConsumer;
     using SafeMath for uint256; 
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC1155("") {} 
+    constructor() ERC1155("") {
+        apiConsumer = APIConsumer(0xecdf30e9A27EB15D8a2fd21F26fB36CF2BAfA0A7);
+    } 
 
     uint256 public numOfQuestChallenges;
 
@@ -41,22 +46,6 @@ contract QuestManager is ERC1155, Ownable {
     mapping(uint256 => string) private _tokenURIs; 
     mapping(uint256 => QuestChallenges) public questChallenges;
 
-    function startQuest(
-        uint256 _questTokenId
-    ) payable public {
-        Quest storage quest = quests[_questTokenId];
-        require(msg.value >= quest.minStakeAmount, "You must stake enough ether to begin this quest");
-
-        QuestChallenges storage newQuestChallenge = questChallenges[numOfQuestChallenges];
-
-        newQuestChallenge.challengeId = numOfQuestChallenges;
-        newQuestChallenge.questTokenId = _questTokenId;
-        newQuestChallenge.submitter = msg.sender;
-        newQuestChallenge.stakeAmount = msg.value;
-        newQuestChallenge.startTime = block.timestamp;
-        newQuestChallenge.completed = false;
-    }
-
     function createQuest (
         uint256 _maxQuestWinners,
         uint256 _minWorkoutDuration,
@@ -83,6 +72,55 @@ contract QuestManager is ERC1155, Ownable {
 
         _setTokenURI(tokenId, _metadataURI);
     } 
+
+    function startQuest(
+        uint256 _questTokenId
+    ) payable public {
+        Quest storage quest = quests[_questTokenId];
+        require(msg.value >= quest.minStakeAmount, "You must stake enough ether to begin this quest");
+
+        QuestChallenges storage newQuestChallenge = questChallenges[numOfQuestChallenges];
+
+        newQuestChallenge.challengeId = numOfQuestChallenges;
+        newQuestChallenge.questTokenId = _questTokenId;
+        newQuestChallenge.submitter = msg.sender;
+        newQuestChallenge.stakeAmount = msg.value;
+        newQuestChallenge.startTime = block.timestamp;
+        newQuestChallenge.completed = false;
+    }
+
+    function submitQuest(uint256 _challengeId, uint256 _activityId, string memory _authCode) payable public {
+        QuestChallenges storage questChallenge = questChallenges[_challengeId];
+        Quest storage quest = quests[questChallenge.questTokenId];
+
+        require(questChallenge.submitter == msg.sender, "You must be this quest challenge's challenger");
+        require(block.timestamp - questChallenge.startTime <= quest.maxQuestDuration, "Time has passed, sorry");
+        require(questChallenge.completed == false, "This quest has been completed");
+
+        apiConsumer.requestActivityDuration(_activityId, _authCode); 
+        uint256 activityDuration = apiConsumer.getDuration(_activityId);
+    }
+
+    // struct Quest {
+    //     uint256 tokenId;
+    //     address creator;
+    //     uint256 maxQuestWinners;
+    //     uint256 minWorkoutDuration;
+    //     uint256 minStakeAmount;
+    //     uint256 questDifficulty;
+    //     uint256 maxQuestDuration;
+    //     string metadataURI; 
+    // }
+
+    // struct QuestChallenges {
+    //     uint256 challengeId;
+    //     uint256 questTokenId;
+    //     address submitter;
+    //     uint256 workoutDuration;
+    //     uint256 stakeAmount;
+    //     uint256 startTime;
+    //     bool completed;
+    // }
 
     function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal virtual {
         require(exists(tokenId), "ERC1155Metadata: URI set of nonexistent token");

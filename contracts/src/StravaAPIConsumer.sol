@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x8ed527Acb4703931925f7bEaB8E8675629E6329d
+// Sepolia : 0xecdf30e9A27EB15D8a2fd21F26fB36CF2BAfA0A7 
 pragma solidity 0.8.17;
 
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
@@ -70,7 +70,7 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
         movingTime = _movingTime;
     }
 
-    function getDuration(uint256 _activityId) internal view returns (uint256) {
+    function getDuration(uint256 _activityId) public view returns (uint256) {
         return activityDurations[_activityId];
     }
 
