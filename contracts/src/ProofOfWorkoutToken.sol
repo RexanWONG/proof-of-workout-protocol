@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0xB72DFE29B3Cc5f79c5dc64732cd3A0eeBFAC25Ec
+// Sepolia : 0xe0974e22eC4aFD5c353110f9f41F562aB17deA48
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -43,6 +43,24 @@ contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
 
     function getBalanceOfAddress(address walletAddress) public view returns (uint256) {
         return balanceOf(walletAddress);
+    }
+
+    function computePowTokenReward(
+        uint256 _ethStaked, 
+        uint256 _questDuration, 
+        uint256 _difficulty
+    ) public view returns (uint256) {
+        uint256 powTokenReward = (
+            (
+                (_ethStaked.mul(_questDuration)).mul(_difficulty)
+            ).div(100)
+        );
+
+        if (powTokenReward > currentMaxRewardAmount) {
+            return currentMaxRewardAmount;
+        } else {
+            return powTokenReward;
+        }
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)

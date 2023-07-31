@@ -1,16 +1,15 @@
-// SPDX-License-Identifier: MIT
-// Sepolia : 0xecdf30e9A27EB15D8a2fd21F26fB36CF2BAfA0A7 
+// SPDX-License-Identifier: MIT 
+// Sepolia : 0x65f758030a7992666Bc0c6696BFA93efA1914E30
 pragma solidity 0.8.17;
 
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 
 import "@openzeppelin/contracts/utils/Strings.sol";
-
-contract APIConsumer is ChainlinkClient, ConfirmedOwner {
+  
+contract StravaDuration is ChainlinkClient, ConfirmedOwner {
     using Chainlink for Chainlink.Request;
-
-    uint256 public movingTime;
+   
     bytes32 private jobId;
     uint256 private fee;
 
@@ -24,19 +23,19 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
     constructor() ConfirmedOwner(msg.sender) {
         setChainlinkToken(0x779877A7B0D9E8603169DdbD7836e478b4624789);
         setChainlinkOracle(0x6090149792dAAeE9D1D568c9f9a6F6B46AA29eFD);
-        jobId = "ca98366cc7314957b8c012c72f05aeeb";
+        jobId = "ca98366cc7314957b8c012c72f05aeeb";  
         fee = (1 * LINK_DIVISIBILITY) / 10; 
 
-        baseUrl = "https://bd4e-173-244-62-26.ngrok-free.app/activity-duration?id=";
+        baseUrl = "https://0171-173-244-62-8.ngrok-free.app/activity-duration?id=";
     }
 
     function requestActivityDuration(uint256 _activityId, string memory _authCode) public returns (bytes32 requestId) {
         if(activityDurations[_activityId] != 0){
-            movingTime = activityDurations[_activityId];
+            uint256 movingTime = activityDurations[_activityId];
             emit RequestMovingTime(0, movingTime); 
             return 0;
         } else {
-            Chainlink.Request memory req = buildChainlinkRequest(
+            Chainlink.Request memory req = buildChainlinkRequest(  
                 jobId,
                 address(this),
                 this.fulfill.selector
@@ -67,7 +66,6 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
         activityDurations[activityId] = _movingTime;
 
         emit RequestMovingTime(_requestId, _movingTime);
-        movingTime = _movingTime;
     }
 
     function getDuration(uint256 _activityId) public view returns (uint256) {
