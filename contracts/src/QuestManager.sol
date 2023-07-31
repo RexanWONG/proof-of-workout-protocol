@@ -9,19 +9,16 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 import "./StravaDuration.sol";
 import "./ProofOfWorkoutToken.sol";
-import "./AccountManager.sol";
 
 contract QuestManager is ERC1155, Ownable, ProofOfWorkoutToken {
     StravaDuration stravaDuration;
-    AccountManager accountManager;
     
     using SafeMath for uint256; 
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
     constructor() ERC1155("") ProofOfWorkoutToken() {
-        // stravaDuration = StravaDuration()
-        accountManager = AccountManager(0xf1A51D384aB338C5e2870200E1db04FFcB41364c);
+        stravaDuration = StravaDuration(0x65f758030a7992666Bc0c6696BFA93efA1914E30);
     } 
 
     uint256 public numOfQuestChallenges;

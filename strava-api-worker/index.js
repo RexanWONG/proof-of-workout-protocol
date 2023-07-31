@@ -108,14 +108,10 @@ app.get('/activity-duration', async (req, res) => {
     const apiHeaders = { headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` } };
 
     const response = await axios.get(`${apiBaseUrl}activities/${ACTIVITY_ID} `, apiHeaders);
-
-    const filteredResponse = {
-      athlete: response.data.athlete.id,
-      moving_time: response.data.moving_time
-    };
     
     res.json({
-      activity_duration: filteredResponse
+      athlete: response.data.athlete.id,
+      moving_time: response.data.moving_time
     });
     
   } catch (error) {
