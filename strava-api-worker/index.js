@@ -110,7 +110,6 @@ app.get('/activity-duration', async (req, res) => {
     const response = await axios.get(`${apiBaseUrl}activities/${ACTIVITY_ID} `, apiHeaders);
     
     res.json({
-      athlete: response.data.athlete.id,
       moving_time: response.data.moving_time
     });
     

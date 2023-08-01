@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT 
-// Sepolia : 0x65f758030a7992666Bc0c6696BFA93efA1914E30
+// Sepolia : 0x079dd6725908660db193381Af2B8DCa0Cbf94541
 pragma solidity 0.8.17;
 
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
@@ -26,7 +26,7 @@ contract StravaDuration is ChainlinkClient, ConfirmedOwner {
         jobId = "ca98366cc7314957b8c012c72f05aeeb";  
         fee = (1 * LINK_DIVISIBILITY) / 10; 
 
-        baseUrl = "https://0171-173-244-62-8.ngrok-free.app/activity-duration?id=";
+        baseUrl = "https://1954-173-244-62-58.ngrok-free.app/activity-duration?id=";
     }
 
     function requestActivityDuration(uint256 _activityId, string memory _authCode) public returns (bytes32 requestId) {
@@ -48,7 +48,7 @@ contract StravaDuration is ChainlinkClient, ConfirmedOwner {
                 apiUrl
             );
 
-            req.add("path", "activity_duration,moving_time"); 
+            req.add("path", "moving_time"); 
 
             req.addInt("times", 1);
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0xe0974e22eC4aFD5c353110f9f41F562aB17deA48
+// Sepolia : 0x0d0677B34E3F16B41a0b600Ecfd09847C9D64625
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -21,7 +21,7 @@ contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
         _mint(msg.sender, PREMINT_SUPPLY); 
     }
     
-    function _mintFromQuestCompletion(address to, uint256 amount) internal {
+    function mintFromQuestCompletion(address to, uint256 amount) external {
         require(amount <= currentMaxRewardAmount, "Cannot mint more than current reward per transaction");
         require(totalSupply() + amount <= MAX_SUPPLY, "Max supply exceeded");
         
@@ -34,9 +34,9 @@ contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
         }
     }
 
-    function _burnFromFailure(address from) internal {
+    function burnFromFailure(address from) external {
         uint256 userBalance = balanceOf(from);
-        // Burn 5% of tokens upon quest failure
+        // Burn 5% of tokens upon  quest failure
         uint256 burnAmount = (userBalance * 5).div(100);
         _burn(from, burnAmount);  
     }
@@ -50,18 +50,19 @@ contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
         uint256 _questDuration, 
         uint256 _difficulty
     ) public view returns (uint256) {
-        uint256 powTokenReward = (
-            (
-                (_ethStaked.mul(_questDuration)).mul(_difficulty)
-            ).div(100)
-        );
+        uint256 powTokenReward = _ethStaked
+            .div(100)
+            .mul(_questDuration)
+            .mul(_difficulty)
+            .mul(100)
+            .div(10**18);
 
         if (powTokenReward > currentMaxRewardAmount) {
             return currentMaxRewardAmount;
         } else {
             return powTokenReward;
         }
-    }
+    }  
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
         internal
