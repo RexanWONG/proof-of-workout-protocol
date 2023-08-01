@@ -109,7 +109,7 @@ const CreateQuestForm: React.FC<CreateQuestFormProps> = ({ contractAddress, web3
 
                     <div className='flex flex-col mb-10'>
                         <label className='text-2xl text-white font-semibold'>
-                            Maximum quest duration - {inputValue.m}
+                            Maximum quest duration - {inputValue.maxQuestDuration}
                         </label>
 
                         <div className='flex flex-row gap-5 mt-5'>
