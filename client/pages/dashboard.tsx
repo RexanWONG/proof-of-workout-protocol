@@ -1,6 +1,6 @@
 import { useAddress, useContractRead, useContract } from "@thirdweb-dev/react";
 
-import { abi, contractAddress } from '../constants/AccountManager/accountManager';
+import { abi, contractAddress } from '../constants/QuestManager/questManager';
 
 import Navbar from '../components/Navbar';
 

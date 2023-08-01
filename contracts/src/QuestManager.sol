@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0xBB87F16d5e565621580eCb612BD622F93EF93595
+// Sepolia : 0x6fFd6A024cF6cda4200E29328570B184dDE95645
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -39,7 +39,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         uint256 minStakeAmount;
         uint256 minWorkoutDuration;
         uint256 questDifficulty;
-        uint256 minQuestDuration;
+        uint256 maxQuestDuration;
         address[] completedUsers;
         string metadataURI; 
     }
@@ -58,12 +58,12 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
     mapping(uint256 => QuestChallenges) public questChallenges;
 
     function createQuest (
-        uint256 _minWorkoutDuration,
+        uint256 _minWorkoutDuration, 
         uint256 _minStakeAmount,
         uint256 _questDifficulty,
-        uint256 _minQuestDuration,
+        uint256 _maxQuestDuration,
         string memory _metadataURI 
-    ) public {  
+    ) public {   
         require(_questDifficulty == 1 || _questDifficulty == 2 || _questDifficulty == 3);
 
         uint256 tokenId = _tokenIdCounter.current();
@@ -79,7 +79,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         newQuest.minStakeAmount = _minStakeAmount;
         newQuest.minWorkoutDuration = _minWorkoutDuration;
         newQuest.questDifficulty = _questDifficulty;
-        newQuest.minQuestDuration = _minQuestDuration;
+        newQuest.maxQuestDuration = _maxQuestDuration;
         newQuest.metadataURI = _metadataURI;  
     } 
 
@@ -111,13 +111,13 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         Quest storage quest = quests[questChallenge.questTokenId];
 
         require(questChallenge.submitter == msg.sender, "You must be this quest challenge's challenger");
-        require(block.timestamp - questChallenge.startTime <= quest.minQuestDuration, "Time has passed, sorry");
+        require(block.timestamp - questChallenge.startTime <= quest.maxQuestDuration, "Time has passed, sorry");
         require(questChallenge.completed == false, "This quest has been completed");
 
         _stravaDuration.requestActivityDuration(_activityId, _authCode); 
         uint256 activityDuration = _stravaDuration.getDuration(_activityId);
 
-        require(activityDuration >= quest.minQuestDuration, "Activity duration not long enough");
+        require(activityDuration >= quest.maxQuestDuration, "Activity duration not long enough");
 
         uint256 powTokenReward = _powToken.computePowTokenReward(
             questChallenge.stakeAmount, 
@@ -137,7 +137,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         Quest storage quest = quests[questChallenge.questTokenId];
 
         require(questChallenge.completed == false, "Quest has been completed");
-        require(block.timestamp - questChallenge.startTime >= quest.minQuestDuration, "Quest challenge not yet over");
+        require(block.timestamp - questChallenge.startTime >= quest.maxQuestDuration, "Quest challenge not yet over");
         require(quest.creator == msg.sender, "Only the creator of the quest can call this function");
 
         payable(msg.sender).transfer(questChallenge.stakeAmount);

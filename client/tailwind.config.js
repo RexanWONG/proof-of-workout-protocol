@@ -27,7 +27,8 @@ module.exports = {
                   'background-position': 'right center'
               }
           },
-      }
+      },
+     
     },
   },
   plugins: [],
