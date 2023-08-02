@@ -36,7 +36,7 @@ const QuestLeaderboard: React.FC<QuestLeaderboardProps> = ({
 
   return (
     <tr className="bg-gray-800 border-gray-800 hover:bg-gray-800/10">
-      <th scope="row" className="px-6 py-4 font-bold text-white text-[20px]">
+      <th scope="row" className="px-6 py-6 font-bold text-white text-[20px]">
         {name}
       </th>
       <td className="px-6 py-4 text-[18px]">{formattedWorkoutDuration} Minutes</td>

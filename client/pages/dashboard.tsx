@@ -31,8 +31,9 @@ const Dashboard = () => {
 
       <div className="mt-10 p-5">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+
           <table className="w-full text-sm text-left text-gray-300">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
+            <thead className="text-gray-400 bg-gray-900">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Quest name
