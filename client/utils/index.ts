@@ -7,10 +7,13 @@ export const convertSecondsToMinutes = (seconds: number) => {
     return seconds / 60;
 }
 
-export const etherToWei = (etherAmount: number) => {
-    const weiPerEther = 1000000000000000000; // 1 ether = 10^18 wei
-    const weiAmount = etherAmount * weiPerEther;
-    return weiAmount;
+export const computePowTokenRewards = (
+    eth_staked: number,
+    duration: number,
+    difficulty: number
+) => {
+    const powTokenReward = ((eth_staked/100) * duration * (difficulty * 100))/(1000000000000000000)
+    return powTokenReward;
 }
   
   
