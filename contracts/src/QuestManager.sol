@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x8324c5b5f57dAE0c727746308E2f6088d500d21C
+// Sepolia : 0x878622703a9Ba46F9EF5BD5982cCf043e88ed599
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -35,6 +35,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
 
     struct Quest {
         uint256 tokenId;
+        string name;
         address creator;
         uint256 minStakeAmount;
         uint256 minWorkoutDuration;
@@ -57,6 +58,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
     mapping(uint256 => QuestChallenges) public questChallenges;
 
     function createQuest (
+        string memory _name,
         uint256 _minWorkoutDuration, 
         uint256 _minStakeAmount,
         uint256 _questDifficulty,
@@ -70,6 +72,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         Quest storage newQuest = quests[tokenId];
 
         newQuest.tokenId = tokenId;
+        newQuest.name = _name;
         newQuest.creator = msg.sender;
         newQuest.minStakeAmount = _minStakeAmount;
         newQuest.minWorkoutDuration = _minWorkoutDuration;
@@ -98,6 +101,8 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         newQuestChallenge.stakeAmount = msg.value;
         newQuestChallenge.startTime = block.timestamp;
         newQuestChallenge.completed = false;
+
+        numOfQuestChallenges++;
     }
 
     function submitQuest(

@@ -16,7 +16,6 @@ const CreateQuestForm: React.FC<CreateQuestFormProps> = ({ contractAddress, web3
     const [inputValue, setInputValue] = useState({
         name: "",
         description: "",
-        metadataURI: "",
         minWorkoutDuration: 0,
         minStakeAmount: 0.02, // in ether
         questDifficulty: 1, // in seconds
