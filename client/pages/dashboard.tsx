@@ -1,7 +1,6 @@
 import { useAddress, useContractRead, useContract } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 
-
 import { abi, contractAddress } from '../constants/QuestManager/questManager';
 import Navbar from '../components/Navbar';
 import QuestLeaderboard from "../components/QuestLeaderboard";
