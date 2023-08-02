@@ -18,9 +18,9 @@ const CreateQuestForm: React.FC<CreateQuestFormProps> = ({ contractAddress, web3
         description: "",
         metadataURI: "",
         minWorkoutDuration: 0,
-        minStakeAmount: 0.02,
-        questDifficulty: 1,
-        maxQuestDuration: 10,
+        minStakeAmount: 0.02, // in ether
+        questDifficulty: 1, // in seconds
+        maxQuestDuration: 10, // in seconds
     });
 
 
