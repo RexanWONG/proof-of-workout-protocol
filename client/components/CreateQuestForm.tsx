@@ -2,20 +2,25 @@ import { useState } from 'react';
 import { Web3Button } from "@thirdweb-dev/react";
 import { ChangeEvent } from 'react';
 
-import Loading from './Loading';
 import { convertSecondsToMinutes } from '../utils';
+import { ethers } from 'ethers';
 
 interface CreateQuestFormProps {
     contractAddress: string;
     web3ButtonText: string;
-    web3ButtonFunction: (metadataURI: string, tokenId?: number) => void;
+    web3ButtonFunction: (
+        name: string,
+        minWorkoutDuration: number,
+        minStakeAmount: ethers.BigNumber,
+        questDifficulty: number,
+        maxQuestDuration: number
+    ) => void;
 }
 
 const CreateQuestForm: React.FC<CreateQuestFormProps> = ({ contractAddress, web3ButtonText, web3ButtonFunction }) => {
 
     const [inputValue, setInputValue] = useState({
         name: "",
-        description: "",
         minWorkoutDuration: 0,
         minStakeAmount: 0.02, // in ether
         questDifficulty: 1, // in seconds
@@ -205,6 +210,22 @@ const CreateQuestForm: React.FC<CreateQuestFormProps> = ({ contractAddress, web3
                         </p>
                     </div>
 
+                </div>
+
+                <div className='mt-10'>
+                    <Web3Button
+                        theme="dark"
+                        contractAddress={contractAddress}
+                        action={() => web3ButtonFunction(
+                            inputValue.name,
+                            inputValue.minWorkoutDuration,
+                            ethers.utils.parseEther(String(inputValue.minStakeAmount)),
+                            inputValue.questDifficulty,
+                            inputValue.maxQuestDuration
+                        )}
+                    >
+                        {web3ButtonText}
+                    </Web3Button>
                 </div>
             </div>
         </div>

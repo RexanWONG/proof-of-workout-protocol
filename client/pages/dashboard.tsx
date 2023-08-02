@@ -8,7 +8,6 @@ const Dashboard = () => {
   const address = useAddress();
 
   const { contract } = useContract(contractAddress, abi);
-  const { data: isAccountRegistered } = useContractRead(contract, "checkIfAccountIsRegistered", [address])
 
   return (
     <div className='flex flex-col min-h-screen bg-black'>

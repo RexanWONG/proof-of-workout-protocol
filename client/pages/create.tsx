@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import { useContractWrite, useContract } from "@thirdweb-dev/react";
 import { abi, contractAddress } from '../constants/QuestManager/questManager'
 import { useRouter } from 'next/router';
+import { ethers } from 'ethers';
 
 const Create = () => {
   const router = useRouter(); 
@@ -11,9 +12,21 @@ const Create = () => {
 
   const { mutateAsync: createQuest } = useContractWrite(contract, "createQuest");
 
-  const handleCreateQuest = async (metadataURI: string) => {
+  const handleCreateQuest = async (
+    name: string,
+    minWorkoutDuration: number,
+    minStakeAmount: ethers.BigNumber,
+    questDifficulty: number,
+    maxQuestDuration: number
+  ) => {
     try {
-      await createQuest({ args: [metadataURI] });
+      const data = await createQuest({ args: [
+        name, 
+        minWorkoutDuration, 
+        minStakeAmount, 
+        questDifficulty, 
+        maxQuestDuration
+      ] });
       alert("Quest Created!") 
       router.push('/dashboard')
     } catch (error) {
