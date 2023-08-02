@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "metadata/index.js", "utils/accountManager.ts", "utils/index.ts", "pages/api/user-id.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "metadata/index.js", "utils/accountManager.ts", "utils/index.ts", "pages/api/user-id.js", "components/QuestImage.jsx"],
   "exclude": ["node_modules"]
 }

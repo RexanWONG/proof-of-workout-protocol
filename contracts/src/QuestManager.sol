@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x6fFd6A024cF6cda4200E29328570B184dDE95645
+// Sepolia : 0x8324c5b5f57dAE0c727746308E2f6088d500d21C
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -41,7 +41,6 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         uint256 questDifficulty;
         uint256 maxQuestDuration;
         address[] completedUsers;
-        string metadataURI; 
     }
 
     struct QuestChallenges {
@@ -61,16 +60,12 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         uint256 _minWorkoutDuration, 
         uint256 _minStakeAmount,
         uint256 _questDifficulty,
-        uint256 _maxQuestDuration,
-        string memory _metadataURI 
+        uint256 _maxQuestDuration
     ) public {   
         require(_questDifficulty == 1 || _questDifficulty == 2 || _questDifficulty == 3);
 
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
-
-        _safeMint(address(this), tokenId);
-        _setTokenURI(tokenId, _metadataURI);
 
         Quest storage newQuest = quests[tokenId];
 
@@ -80,7 +75,6 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         newQuest.minWorkoutDuration = _minWorkoutDuration;
         newQuest.questDifficulty = _questDifficulty;
         newQuest.maxQuestDuration = _maxQuestDuration;
-        newQuest.metadataURI = _metadataURI;  
     } 
 
     function startQuest(
@@ -106,13 +100,18 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         newQuestChallenge.completed = false;
     }
 
-    function submitQuest(uint256 _challengeId, uint256 _activityId, string memory _authCode) payable public {
+    function submitQuest(
+        uint256 _challengeId, 
+        uint256 _activityId, 
+        string memory _authCode, 
+        string memory _metadataURI 
+    ) payable public {
         QuestChallenges storage questChallenge = questChallenges[_challengeId];
         Quest storage quest = quests[questChallenge.questTokenId];
 
         require(questChallenge.submitter == msg.sender, "You must be this quest challenge's challenger");
         require(block.timestamp - questChallenge.startTime <= quest.maxQuestDuration, "Time has passed, sorry");
-        require(questChallenge.completed == false, "This quest has been completed");
+        require(questChallenge.completed == false, "This quest challenge has been completed, sorry");
 
         _stravaDuration.requestActivityDuration(_activityId, _authCode); 
         uint256 activityDuration = _stravaDuration.getDuration(_activityId);
@@ -124,11 +123,14 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
             questChallenge.workoutDuration, 
             quest.questDifficulty  
         );
-
+        questChallenge.workoutDuration = activityDuration;
         questChallenge.completed = true;
         quest.completedUsers.push(msg.sender);
+
+        _safeMint(msg.sender, quest.tokenId);
+        _setTokenURI(quest.tokenId, _metadataURI);
+
         payable(msg.sender).transfer(questChallenge.stakeAmount);
-        safeTransferFrom(address(this), msg.sender, quest.tokenId); 
         _powToken.mintFromQuestCompletion(msg.sender, powTokenReward);
     }
 
@@ -140,7 +142,14 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         require(block.timestamp - questChallenge.startTime >= quest.maxQuestDuration, "Quest challenge not yet over");
         require(quest.creator == msg.sender, "Only the creator of the quest can call this function");
 
-        payable(msg.sender).transfer(questChallenge.stakeAmount);
+        payable(msg.sender).transfer(questChallenge.stakeAmount/2);
+
+        uint256 distributionAmountToEachCompletedUser = (questChallenge.stakeAmount/2).div(quest.completedUsers.length);
+
+        for (uint256 i = 0 ; i < quest.completedUsers.length ; ++i) {
+            payable(quest.completedUsers[i]).transfer(distributionAmountToEachCompletedUser);
+        }
+
         _powToken.burnFromFailure(questChallenge.submitter);
     }
 

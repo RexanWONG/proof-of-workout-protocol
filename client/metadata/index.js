@@ -1,4 +1,4 @@
-const { createCanvas, Context2d } = require("canvas");
+const { createCanvas } = require("canvas");
 const fs = require("fs");
 
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
@@ -28,7 +28,14 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
     return { lines, y };
 }
 
-const createQuestImage = (quest) => {
+export const createQuestImage = (
+    name, 
+    creator, 
+    minStakeAmount, 
+    difficulty, 
+    maxQuestDuration, 
+    minWorkoutDuration
+) => {
     // Dimensions for the square canvas
     const size = 627;
   
@@ -65,13 +72,13 @@ const createQuestImage = (quest) => {
     context.font = "bold 40pt 'Inter'";
     context.textAlign = "center";
     context.fillStyle = textGradient;
-    const wrapResult = wrapText(context, quest.name, size / 2, 250, size - 20, 50);
+    const wrapResult = wrapText(context, name, size / 2, 250, size - 20, 50);
   
     // Set the style for the proof text
     context.font = "bold 20pt 'Inter'";
     context.textAlign = "left";
     context.fillStyle = "#fff";
-    context.fillText(`Proof of Workout Protocol -  Quest ${quest.tokenId}`, 20, 40);
+    context.fillText(`Proof of Workout Protocol`, 20, 40);
   
     // Display additional quest information
     // Start at y-coordinate obtained from wrapping quest name, with a buffer of 70px
@@ -79,27 +86,11 @@ const createQuestImage = (quest) => {
     context.font = "bold 16pt 'Inter'";
     context.textAlign = "left";
     context.fillStyle = "#fff";
-    context.fillText(`Creator: ${quest.creator}`, 20, infoY);
-    context.fillText(`Max Submissions: ${quest.maxSubmissions}`, 20, infoY + 40);
-    context.fillText(`Min Duration: ${quest.minDuration}`, 20, infoY + 80);
-    context.fillText(`Min Stake Amount: ${quest.minStakeAmount} ETH`, 20, infoY + 120);
-    context.fillText(`Created Time: ${new Date(quest.createdTime * 1000).toLocaleString()}`, 20, infoY + 160);
-    context.fillText(`Expiry Time: ${new Date(quest.expiryTime * 1000).toLocaleString()}`, 20, infoY + 200);
-  
-    // Write the image to file
-    const buffer = canvas.toBuffer("image/png");
-    fs.writeFileSync(`./images/quest${quest.tokenId}.png`, buffer);
+    context.fillText(`Creator: ${creator}`, 20, infoY);
+    context.fillText(`Quest Difficulty: ${difficulty} mins`, 20, infoY + 80);
+    context.fillText(`Min Stake Amount: ${minStakeAmount} ETH`, 20, infoY + 120);
+    context.fillText(`Max Quest Duration: ${maxQuestDuration} mins`, 20, infoY + 80);
+    context.fillText(`Min Workout Duration: ${minWorkoutDuration} mins`, 20, infoY + 80);
   };
+
   
-  const exampleQuest = {
-    tokenId: 1,
-    creator: "0xabc123...",
-    name: "ride on a bike for at least 40 mins",
-    maxSubmissions: 100,
-    minDuration: 120, // in seconds
-    minStakeAmount: 10,
-    createdTime: Math.floor(Date.now() / 1000), // Current time in seconds
-    expiryTime: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60, // One week from now in seconds
-  };
-  
-  createQuestImage(exampleQuest);

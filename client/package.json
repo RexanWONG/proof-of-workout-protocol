@@ -16,6 +16,7 @@
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
     "axios": "^1.4.0",
+    "canvas": "^2.11.2",
     "dotenv": "^16.3.1",
     "ethers": "^5",
     "http-proxy-middleware": "^2.0.6",
