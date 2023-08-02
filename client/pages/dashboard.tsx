@@ -30,6 +30,7 @@ const Dashboard = () => {
       <Navbar linkHref={'/create'} linkText={'Create quest'}/>
 
       <div className="mt-10 p-5">
+        <h1 className="text-white text-4xl font-bold p-5">Quests Board</h1>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 
           <table className="w-full text-sm text-left text-gray-300">
