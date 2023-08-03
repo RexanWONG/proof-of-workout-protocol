@@ -3,6 +3,7 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import { MetaMaskContextProvider } from "../hooks/useMetamask";
 import { Sepolia } from "@thirdweb-dev/chains"
+import Sidebar from "../components/Sidebar";
 
 // This is the chain your dApp will work on.
 // Change this to the chain your app is built for.
@@ -11,7 +12,9 @@ import { Sepolia } from "@thirdweb-dev/chains"
 function MyApp({ Component, pageProps }: AppProps) {
   return (
       <ThirdwebProvider activeChain={Sepolia}>
+        <Sidebar>
           <Component {...pageProps} />
+        </Sidebar>
       </ThirdwebProvider>
     
   );

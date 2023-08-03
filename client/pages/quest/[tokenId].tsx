@@ -7,6 +7,7 @@ import Navbar from '../../components/Navbar';
 import QuestImage from '../../components/QuestImage';
 import truncateEthAddress from 'truncate-eth-address';
 import Link from 'next/link';
+import QuestChallengesLeaderboard from '../../components/QuestChallengesLeaderboard';
 
 const Quest = () => {
     const router = useRouter(); 
@@ -128,6 +129,20 @@ const Quest = () => {
                             </th>
                         </tr>
                     </thead>
+                    <tbody>
+                        {challenges.map((challenge, index) => 
+                            <QuestChallengesLeaderboard 
+                                key={index}
+                                challengeId={Number(challenge[0])}
+                                completed={challenge[6]}
+                                workoutDuration={Number(challenge[3])}
+                                stakedAmount={Number(challenge[4])}
+                                startTime={Number(challenge[5])}
+                                maxQuestDuration={Number(quest[6])}
+                                challenger={challenge[2]}
+                            />
+                        )}
+                    </tbody>
                 </table>
              </div>
           </div>
