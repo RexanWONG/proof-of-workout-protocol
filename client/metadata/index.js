@@ -91,6 +91,8 @@ export const createQuestImage = (
     context.fillText(`Min Stake Amount: ${minStakeAmount} ETH`, 20, infoY + 120);
     context.fillText(`Max Quest Duration: ${maxQuestDuration} mins`, 20, infoY + 80);
     context.fillText(`Min Workout Duration: ${minWorkoutDuration} mins`, 20, infoY + 80);
+
+    return canvas.toDataURL();
   };
 
   

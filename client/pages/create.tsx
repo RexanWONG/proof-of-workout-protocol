@@ -34,7 +34,6 @@ const Create = () => {
     }
   }
 
-
   return (
     <div className='min-h-screen bg-black'>
         <Navbar linkHref={'/dashboard'} linkText={'Back to home'}/> 

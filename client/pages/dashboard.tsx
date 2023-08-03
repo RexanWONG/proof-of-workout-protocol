@@ -6,8 +6,6 @@ import Navbar from '../components/Navbar';
 import QuestLeaderboard from "../components/QuestLeaderboard";
 
 const Dashboard = () => {  
-  const address = useAddress();
-
   const { contract } = useContract(contractAddress, abi);
 
   const { data, isLoading, error } = useContractRead(contract, "getQuests");
@@ -62,6 +60,7 @@ const Dashboard = () => {
               {listOfQuests.map((quest, index) => 
                 <QuestLeaderboard 
                   key={index} 
+                  tokenId={Number(quest[0])}
                   name={quest[1]}
                   creator={quest[2]}
                   minWorkoutDuration={Number(quest[4])}
