@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x878622703a9Ba46F9EF5BD5982cCf043e88ed599
+// Sepolia : 0x63e1f57972ea6fd3534CdcA9Cb4f2d4050ba1381
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -123,14 +123,15 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
 
         require(activityDuration >= quest.maxQuestDuration, "Activity duration not long enough");
 
+        questChallenge.workoutDuration = activityDuration;
+        questChallenge.completed = true;
+        quest.completedUsers.push(msg.sender);
+
         uint256 powTokenReward = _powToken.computePowTokenReward(
             questChallenge.stakeAmount, 
             questChallenge.workoutDuration, 
             quest.questDifficulty  
         );
-        questChallenge.workoutDuration = activityDuration;
-        questChallenge.completed = true;
-        quest.completedUsers.push(msg.sender);
 
         _safeMint(msg.sender, quest.tokenId);
         _setTokenURI(quest.tokenId, _metadataURI);
