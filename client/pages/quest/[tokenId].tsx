@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useAddress, useContractRead, useContract } from "@thirdweb-dev/react";
+import { useContractRead, useContract } from "@thirdweb-dev/react";
 import { abi, contractAddress } from '../../constants/QuestManager/questManager';
 
 import Navbar from '../../components/Navbar';
 import QuestImage from '../../components/QuestImage';
 import truncateEthAddress from 'truncate-eth-address';
+import Link from 'next/link';
 
 const Quest = () => {
     const router = useRouter(); 
@@ -77,22 +78,23 @@ const Quest = () => {
                             <p>Quest #{Number(quest[0])}</p> 
                         </div>
 
-                        <button className="bg-white text-black hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:animate-text font-bold rounded-lg px-4 py-2">
-                            Start quest!
-                        </button>
+                        <Link href={`/start/${tokenId}`}>
+                            <button className="bg-white text-black hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:animate-text font-bold rounded-lg px-4 py-2">
+                                Start quest!
+                            </button>
+                        </Link>
                     </div>
 
-                    <h1 className='text-white text-2xl mt-10'>Completed users : </h1>
+                    <h1 className='text-white text-2xl mt-10'>Completed users ({[quest[7]].length - 1}) : </h1>
                     <div className="h-64 overflow-y-auto">
                         <ul>
                             {[quest[7]].map((address, index) => (
-                            <li key={index} className="py-2">
+                            <li key={index} className="text-white py-2">
                                 {address}
                             </li>
                             ))}
                         </ul>
                     </div>
-
                 </div>
             </div>
           )}

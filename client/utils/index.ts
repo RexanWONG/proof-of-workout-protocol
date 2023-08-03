@@ -13,7 +13,13 @@ export const computePowTokenRewards = (
     difficulty: number
 ) => {
     const powTokenReward = ((eth_staked/100) * duration * (difficulty * 100))/(1000000000000000000)
-    return powTokenReward;
+
+    if (powTokenReward > 5000) {
+        return 5000
+    } else {
+        return powTokenReward;
+    }
+    
 }
   
   
