@@ -58,24 +58,17 @@ app.get('/user-id', async (req, res) => {
 app.get('/user-activities', async (req, res) => {
   try {   
     const AUTHORIZATION_CODE = req.query.code;
-    const AFTER_TIMESTAMP = req.query.after;
 
     if (!AUTHORIZATION_CODE) {
       return res.status(400).json({
         message: 'Authorization code is required as a query parameter'
       });
     } 
-    
-    if (!AFTER_TIMESTAMP) {
-      return res.status(400).json({
-        message: 'After timestamp is required as a query parameter'
-      });
-    } 
 
     const ACCESS_TOKEN = await getAccessToken(AUTHORIZATION_CODE)
     const apiHeaders = { headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` } };
 
-    const response = await axios.get(`${apiBaseUrl}athlete/activities?after=${AFTER_TIMESTAMP}`, apiHeaders);
+    const response = await axios.get(`${apiBaseUrl}athlete/activities`, apiHeaders);
     
     res.json({
       activities: response.data
@@ -121,7 +114,7 @@ app.get('/activity-duration', async (req, res) => {
   }
 });
 
-const allowedOrigins = ['http://localhost:3000/', 'http://localhost:3000/dashboard'];
+const allowedOrigins = ['http://localhost:3000/', 'http://localhost:3000/submit'];
 
 app.use(cors({
   origin: function (origin, callback) {

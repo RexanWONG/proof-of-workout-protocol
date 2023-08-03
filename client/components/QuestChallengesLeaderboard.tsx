@@ -1,6 +1,6 @@
 import truncateEthAddress from 'truncate-eth-address';
 
-import { computePowTokenRewards, convertSecondsIntoRelativeTime, convertUnixTimestampInSecondsToHumanReadable, getCurrentUnixTimestampInSeconds } from '../utils';
+import { convertSecondsIntoRelativeTime, convertUnixTimestampInSecondsToHumanReadable, getCurrentUnixTimestampInSeconds } from '../utils';
 
 interface QuestChallengesLeaderboardProps {
   challengeId: number;

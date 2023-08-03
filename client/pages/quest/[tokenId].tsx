@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useContractRead, useContract } from "@thirdweb-dev/react";
+import { useAddress, useContractRead, useContract } from "@thirdweb-dev/react";
 import { abi, contractAddress } from '../../constants/QuestManager/questManager';
 
 import Navbar from '../../components/Navbar';
@@ -8,10 +8,13 @@ import QuestImage from '../../components/QuestImage';
 import truncateEthAddress from 'truncate-eth-address';
 import Link from 'next/link';
 import QuestChallengesLeaderboard from '../../components/QuestChallengesLeaderboard';
+import { getCurrentUnixTimestampInSeconds } from '../../utils';
 
 const Quest = () => {
     const router = useRouter(); 
     const { tokenId } = router.query; 
+
+    const address = useAddress();
 
     const { contract } = useContract(contractAddress, abi);
 
@@ -20,6 +23,7 @@ const Quest = () => {
 
     const [quest, setQuest] = useState([])
     const [challenges, setChallenges] = useState([])
+    const [isOngoingChallenge, setIsOngoingChallenge] = useState(false)
 
     useEffect(() => {
         if (questsError || questChallengesError) {
@@ -38,9 +42,12 @@ const Quest = () => {
         if (!isQuestChallengesLoading && questChallenges) {
             let challengeList = []
             for (let i = 0 ; i < questChallenges.length ; i++) {
-                if (Number(questChallenges[i].questTokenId) === Number(tokenId)) {
-                    console.log(questChallenges[i])    
+                if (Number(questChallenges[i].questTokenId) === Number(tokenId)) {    
                     challengeList.push(questChallenges[i])
+                }
+
+                if (questChallenges[i].submitter === address && questChallenges[i].completed == false && getCurrentUnixTimestampInSeconds() - questChallenges[i].startTime <= quest[6]) {
+                    setIsOngoingChallenge(true)
                 }
             }
 
@@ -48,7 +55,7 @@ const Quest = () => {
         }
 
 
-    }, [quests, isQuestsLoading, questsError, questChallenges, isQuestChallengesLoading, questChallengesError]);
+    }, [quests, isQuestsLoading, questsError, questChallenges, isQuestChallengesLoading, questChallengesError, address]);
 
     return (
         <div className='flex flex-col min-h-screen bg-black'>
@@ -74,16 +81,30 @@ const Quest = () => {
                 </div>
 
                 <div className='flex flex-col items-center justify-center'>
+                    {isOngoingChallenge ? (
+                        <h1 className='text-white mb-5'>You currently have an ongoing challenge</h1>
+                    ) : (
+                        <>
+                        </>
+                    )}
                     <div className='flex flex-row items-center justify-center gap-32'>
                         <div className="text-gray-500 text-[20px] flex flex-row items-center justify-center gap-3">
                             <p>Quest #{Number(quest[0])}</p> 
                         </div>
 
-                        <Link href={`/start/${tokenId}`}>
-                            <button className="bg-white text-black hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:animate-text font-bold rounded-lg px-4 py-2">
-                                Start quest!
-                            </button>
-                        </Link>
+                        {isOngoingChallenge ? (
+                            <Link href={`/submit/${tokenId}`}>
+                                <button className="bg-white text-black hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:animate-text font-bold rounded-lg px-4 py-2">
+                                    Submit your challenge!
+                                </button>
+                            </Link>
+                        ) : (
+                            <Link href={`/start/${tokenId}`}>
+                                <button className="bg-white text-black hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:animate-text font-bold rounded-lg px-4 py-2">
+                                    Start quest!
+                                </button>
+                            </Link>
+                        )}
                     </div>
 
                     <h1 className='text-white text-2xl mt-10'>Completed users ({[quest[7]].length - 1}) : </h1>

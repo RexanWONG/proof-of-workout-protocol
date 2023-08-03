@@ -9,6 +9,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+  background-color: black; /* Adding a black background color */
 }
 
 @keyframes blink {
@@ -20,6 +21,3 @@ body {
   content: '';
   animation: blink 1s infinite;
 }
-
-
-
