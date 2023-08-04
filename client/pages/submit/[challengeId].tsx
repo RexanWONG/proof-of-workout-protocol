@@ -99,7 +99,7 @@ const Submit = () => {
 
     return (
         <div className='flex flex-col min-h-screen bg-black'>
-            <Navbar linkHref={`/quest/${challengeId}`} linkText={'Back to quest page'} />
+            <Navbar linkHref={`/quest/${quest[0]}`} linkText={'Back to quest page'} />
 
             <div className='mt-10 p-5'>
                 <h1 className="text-white text-4xl font-bold">Submit your challenge to the quest</h1>

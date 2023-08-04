@@ -24,6 +24,7 @@ const Quest = () => {
     const [quest, setQuest] = useState([])
     const [challenges, setChallenges] = useState([])
     const [isOngoingChallenge, setIsOngoingChallenge] = useState(false)
+    const [challengeId, setChallengeId] = useState(null)
 
     useEffect(() => {
         if (questsError || questChallengesError) {
@@ -44,11 +45,14 @@ const Quest = () => {
             for (let i = 0 ; i < questChallenges.length ; i++) {
                 if (Number(questChallenges[i].questTokenId) === Number(tokenId)) {    
                     challengeList.push(questChallenges[i])
+
+                    if (questChallenges[i].submitter === address && questChallenges[i].completed == false && getCurrentUnixTimestampInSeconds() - questChallenges[i].startTime <= quest[6]) {
+                        setIsOngoingChallenge(true)
+                        setChallengeId(questChallenges[i].challengeId)
+                    }
                 }
 
-                if (questChallenges[i].submitter === address && questChallenges[i].completed == false && getCurrentUnixTimestampInSeconds() - questChallenges[i].startTime <= quest[6]) {
-                    setIsOngoingChallenge(true)
-                }
+
             }
 
             setChallenges(challengeList as [])
@@ -93,7 +97,7 @@ const Quest = () => {
                         </div>
 
                         {isOngoingChallenge ? (
-                            <Link href={`/submit/${tokenId}`}>
+                            <Link href={`/submit/${challengeId}`}>
                                 <button className="bg-white text-black hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:animate-text font-bold rounded-lg px-4 py-2">
                                     Submit your challenge!
                                 </button>
