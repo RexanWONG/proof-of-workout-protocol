@@ -71,7 +71,7 @@ app.get('/user-activities', async (req, res) => {
         message: 'After timestamp is required as a query parameter'
       });
     } 
-
+    
     const ACCESS_TOKEN = await getAccessToken(AUTHORIZATION_CODE)
     const apiHeaders = { headers: { 'Authorization': `Bearer ${ACCESS_TOKEN}` } };
 

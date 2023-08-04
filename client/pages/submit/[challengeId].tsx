@@ -65,8 +65,8 @@ const Submit = () => {
 
             const params = new URLSearchParams(window.location.search);
             if (!hasFetched.current && params.has('code')) {
-                console.log(challengeStartTime)
-                getActivityDetails(String(params.get('code')), Number(challengeStartTime * 1000))
+                console.log(Number(challengeStartTime))
+                getActivityDetails(String(params.get('code')), Number(challengeStartTime))
                 hasFetched.current = true;
             }
 
