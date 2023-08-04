@@ -27,7 +27,7 @@ const Quest = () => {
 
     useEffect(() => {
         if (questsError || questChallengesError) {
-        console.error("Failed to read contract", questsError);
+            console.error("Failed to read contract", questsError);
         }
 
         if (!isQuestsLoading && quests) {

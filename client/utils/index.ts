@@ -65,6 +65,11 @@ export const convertSecondsIntoRelativeTime = (seconds: number) => {
   
     return result + " later.";
 }
+
+export const convertHumanReadableToBlockTimestamp = (dateString: string) => {
+    const date = new Date(dateString);
+    return Math.floor(date.getTime() / 1000);
+}
   
   
   
