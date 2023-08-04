@@ -150,9 +150,9 @@ const CreateQuestForm: React.FC<CreateQuestFormProps> = ({ contractAddress, web3
                                 Minimum workout duration 
                             </label>
                             <div className='flex flex-row gap-5 mt-5'>
-                                <button type="button" onClick={() => setMinWorkoutDuration(600)} className='bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 hover:animate-text px-5 py-3 rounded-lg'>
+                                <button type="button" onClick={() => setMinWorkoutDuration(10)} className='bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 hover:animate-text px-5 py-3 rounded-lg'>
                                     <h1 className='text-black font-bold'>
-                                        10 MINS
+                                        10 SECS
                                     </h1>
                                 </button>
                                 <button type="button" onClick={() => setMinWorkoutDuration(2400)} className='bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 hover:animate-text px-5 py-3 rounded-lg'>
