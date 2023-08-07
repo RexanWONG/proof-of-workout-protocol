@@ -1,6 +1,6 @@
 import truncateEthAddress from 'truncate-eth-address';
 
-import { convertSecondsIntoRelativeTime, convertUnixTimestampInSecondsToHumanReadable, getCurrentUnixTimestampInSeconds } from '../utils';
+import { computePowTokenRewards, convertSecondsIntoRelativeTime, convertUnixTimestampInSecondsToHumanReadable, getCurrentUnixTimestampInSeconds } from '../utils';
 
 interface QuestChallengesLeaderboardProps {
   challengeId: number;
@@ -10,6 +10,7 @@ interface QuestChallengesLeaderboardProps {
   startTime: number;
   maxQuestDuration: number;
   challenger: string;
+  difficulty: number;
 }
 
 const QuestChallengesLeaderboard: React.FC<QuestChallengesLeaderboardProps> = ({
@@ -20,6 +21,7 @@ const QuestChallengesLeaderboard: React.FC<QuestChallengesLeaderboardProps> = ({
   startTime,
   maxQuestDuration,
   challenger,
+  difficulty
 }) => {
     const renderCompleted = () => {
         if (completed === true) {
@@ -34,7 +36,7 @@ const QuestChallengesLeaderboard: React.FC<QuestChallengesLeaderboardProps> = ({
 
     const renderWorkoutDuration = () => {
       if (workoutDuration !== 0) {
-        return <span>{workoutDuration}</span>
+        return <span>{workoutDuration/60} mins</span>
       } else {
         return <span>N/A</span>
       }
@@ -51,7 +53,6 @@ const QuestChallengesLeaderboard: React.FC<QuestChallengesLeaderboardProps> = ({
     }
 
   return (
-
       <tr className="bg-gray-800 border-gray-800 hover:bg-gray-800/10">
           <th scope="row" className="px-6 py-6 font-bold text-white text-[20px]">
             {challengeId}
@@ -62,6 +63,7 @@ const QuestChallengesLeaderboard: React.FC<QuestChallengesLeaderboardProps> = ({
           <td className="px-6 py-4 text-[18px]">{convertUnixTimestampInSecondsToHumanReadable(startTime)}</td>
           <td className="px-6 py-4 text-[18px] max-w-[150px]">{renderRemainingTime()}</td>
           <td className="px-6 py-4 text-[14px]">{truncateEthAddress(challenger)}</td>
+          <td className="px-6 py-4 text-[14px]">{Math.floor(computePowTokenRewards(stakedAmount, workoutDuration, difficulty))}</td>
           
          
       </tr>

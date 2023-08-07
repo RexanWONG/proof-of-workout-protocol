@@ -111,7 +111,7 @@ const Quest = () => {
                         )}
                     </div>
 
-                    <h1 className='text-white text-2xl mt-10'>Completed users ({[quest[7]].length - 1}) : </h1>
+                    <h1 className='text-white text-2xl mt-10'>Completed users ({[quest[7]].length}) : </h1>
                     <div className="h-64 overflow-y-auto">
                         <ul>
                             {[quest[7]].map((address, index) => (
@@ -165,6 +165,7 @@ const Quest = () => {
                                 startTime={Number(challenge[5])}
                                 maxQuestDuration={Number(quest[6])}
                                 challenger={challenge[2]}
+                                difficulty={Number(quest[5])}
                             />
                         )}
                     </tbody>

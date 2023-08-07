@@ -135,7 +135,7 @@ const FinalSubmitPage = () => {
       <Navbar linkHref={`/submit/${challengeId}`} linkText={'Back to submit page'} />
 
       <div className='mt-10 p-5'>
-        <h1 className='text-white text-4xl font-bold'>Use activity {activityDuration} for submission!</h1>
+        <h1 className='text-white text-4xl font-bold'>Use this activity for submission!  Duration: {Number(activityDuration)/60} mins</h1>
 
         
         <div className='mt-10'>

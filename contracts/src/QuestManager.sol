@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x15604E52F562aE9799ab4b5874a73ebD8e10f55d
+// Sepolia : 0xD2FD5B0Ed1d8c79E03a40ED1caD6e9fcDc39d3F4
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -21,7 +21,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
     Counters.Counter private _tokenIdCounter;
 
     constructor() ERC721("Proof of Workout Protocol", "POWP") {
-        _powToken = ProofOfWorkoutToken(0xab9895a0f4cc9d6f3Ca9aE057D55E47262513cB5);
+        _powToken = ProofOfWorkoutToken(0x92DFBD87ec23120223593E903A5e753772E4039e);
     } 
 
     uint256 public numOfQuestChallenges;

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0xab9895a0f4cc9d6f3Ca9aE057D55E47262513cB5
+// Sepolia : 0x92DFBD87ec23120223593E903A5e753772E4039e
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -60,7 +60,7 @@ contract ProofOfWorkoutToken is ERC20, ERC20Burnable, Pausable, Ownable {
         if (powTokenReward > currentMaxRewardAmount) {
             return currentMaxRewardAmount;
         } else {
-            return powTokenReward;
+            return powTokenReward * 10**18;
         }
     }  
 
