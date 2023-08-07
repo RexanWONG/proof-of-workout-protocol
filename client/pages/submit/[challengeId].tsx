@@ -6,8 +6,8 @@ import { abi, contractAddress } from '../../constants/QuestManager/questManager'
 import Navbar from '../../components/Navbar';
 import Loading from '../../components/Loading';
 
-
 interface Activity {
+    id: number
     name: string;
     distance: number;
     moving_time: number;
@@ -27,7 +27,7 @@ const Submit = () => {
     const { challengeId } = router.query; 
 
     const STRAVA_CLIENT_ID = process.env.NEXT_STRAVA_CLIENT_ID
-    const STRAVA_OAUTH_LINK = `https://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3000/submit/${challengeId}&approval_prompt=force&scope=activity:read`
+    const STRAVA_OAUTH_LINK = `https://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3001/submit/${challengeId}&approval_prompt=force&scope=activity:read`
     
     const [isLoading, setIsLoading] = useState(false)
     const [activitiesList, setActivitiesList] = useState<ActivitiesResponse | null>(null);
@@ -41,8 +41,6 @@ const Submit = () => {
 
     const [quest, setQuest] = useState([])
     const [challenge, setChallenge] = useState([])
-
-    
 
     useEffect(() => {
         if (questsError || questChallengesError) {
@@ -97,6 +95,10 @@ const Submit = () => {
         }
     };
 
+    const handleActivityClick = (activityDuration: number) => {
+        router.push(`/submit/${challengeId}/${activityDuration}`);
+    };
+
     return (
         <div className='flex flex-col min-h-screen bg-black'>
             <Navbar linkHref={`/quest/${quest[0]}`} linkText={'Back to quest page'} />
@@ -118,21 +120,23 @@ const Submit = () => {
                     {activitiesList && activitiesList.activities && !isLoading && activitiesList.activities.length > 0 ? (
                         <div className='flex flex-col items-center justify-center'>
                             {activitiesList.activities.map((activity, index) => (
-                                <div
-                                    key={index}
-                                    className={Number(quest[4]) > activity.moving_time ? "bg-red-500 text-white p-4 m-2 w-full rounded-lg shadow-md" : "bg-emerald-700 text-white p-4 m-2 w-full rounded-lg shadow-md"}
-                                >
-                                    <h2 className="text-2xl font-bold">{activity.name} - {activity.start_date}</h2>
-                                    <p className="text-lg">{activity.type} - {activity.sport_type}</p>
-                                    <p>Distance: {activity.distance} meters</p>
-                                    <p>Moving Time: {activity.moving_time} seconds</p>
-                                    <p>Elapsed Time: {activity.elapsed_time} seconds</p>
-                                    <p>Total Elevation Gain: {activity.total_elevation_gain} meters</p>
-                                </div>
+                                    <div
+                                        key={index}
+                                        className={Number(quest[4]) > activity.moving_time ? "bg-red-500 hover:animate-pulse text-white p-4 m-2 w-full rounded-lg shadow-md" : "bg-emerald-700 hover:animate-pulse text-white p-4 m-2 w-full rounded-lg shadow-md"}
+                                        onClick={() => handleActivityClick(activity.moving_time)}
+                                    >
+                                        <h2 className="text-2xl font-bold">{activity.name} - {activity.start_date}</h2>
+                                        <p className="text-lg">ID : {activity.id}</p>
+                                        <p className="text-lg">{activity.type} - {activity.sport_type}</p>
+                                        <p>Distance: {activity.distance} meters</p>
+                                        <p>Moving Time: {activity.moving_time} seconds</p>
+                                        <p>Elapsed Time: {activity.elapsed_time} seconds</p>
+                                        <p>Total Elevation Gain: {activity.total_elevation_gain} meters</p>
+                                    </div>
                             ))}
                         </div>
                     ) : (
-                        <p className='text-white'>No activities available</p>
+                        <p className='text-white'>No activities that happened after the start time of the challenge available</p>
                     )}
                 </div>
             </div>

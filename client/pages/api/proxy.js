@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   try {
-    const url = "https://f7ac-173-244-62-32.ngrok-free.app/user-activities";
+    const url = "https://90a1-173-244-62-24.ngrok-free.app/user-activities";
     const params = {
       params: req.query
     };

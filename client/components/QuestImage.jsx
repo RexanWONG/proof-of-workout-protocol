@@ -93,9 +93,7 @@ const QuestImage = ({
   }
 
   return (
-    <div>
       <canvas ref={canvasRef} width={627} height={627} />
-    </div>
   );
 };
 

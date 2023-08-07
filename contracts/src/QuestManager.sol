@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x63e1f57972ea6fd3534CdcA9Cb4f2d4050ba1381
+// Sepolia : 0x15604E52F562aE9799ab4b5874a73ebD8e10f55d
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -11,11 +11,9 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-import "./StravaDuration.sol";
 import "./ProofOfWorkoutToken.sol";
 
 contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Receiver, Ownable {
-    StravaDuration _stravaDuration;
     ProofOfWorkoutToken _powToken;
     
     using SafeMath for uint256; 
@@ -23,8 +21,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
     Counters.Counter private _tokenIdCounter;
 
     constructor() ERC721("Proof of Workout Protocol", "POWP") {
-        _stravaDuration = StravaDuration(0x079dd6725908660db193381Af2B8DCa0Cbf94541);
-        _powToken = ProofOfWorkoutToken(0x0d0677B34E3F16B41a0b600Ecfd09847C9D64625);
+        _powToken = ProofOfWorkoutToken(0xab9895a0f4cc9d6f3Ca9aE057D55E47262513cB5);
     } 
 
     uint256 public numOfQuestChallenges;
@@ -107,8 +104,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
 
     function submitQuest(
         uint256 _challengeId, 
-        uint256 _activityId, 
-        string memory _authCode, 
+        uint256 _activityDuration, 
         string memory _metadataURI 
     ) payable public {
         QuestChallenges storage questChallenge = questChallenges[_challengeId];
@@ -118,12 +114,9 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         require(block.timestamp - questChallenge.startTime <= quest.maxQuestDuration, "Time has passed, sorry");
         require(questChallenge.completed == false, "This quest challenge has been completed, sorry");
 
-        _stravaDuration.requestActivityDuration(_activityId, _authCode); 
-        uint256 activityDuration = _stravaDuration.getDuration(_activityId);
+        require(_activityDuration >= quest.minWorkoutDuration, "Activity duration not long enough");
 
-        require(activityDuration >= quest.maxQuestDuration, "Activity duration not long enough");
-
-        questChallenge.workoutDuration = activityDuration;
+        questChallenge.workoutDuration = _activityDuration;
         questChallenge.completed = true;
         quest.completedUsers.push(msg.sender);
 

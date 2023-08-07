@@ -121,7 +121,7 @@ app.get('/activity-duration', async (req, res) => {
   }
 });
 
-const allowedOrigins = ['http://localhost:3000/', 'http://localhost:3000/submit'];
+const allowedOrigins = ['http://localhost:3001/', 'http://localhost:3001/submit'];
 
 app.use(cors({
   origin: function (origin, callback) {
