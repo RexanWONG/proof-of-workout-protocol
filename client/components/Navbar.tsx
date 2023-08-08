@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ linkHref, linkText }) => {
           <span className="text-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text font-black">Proof of Workout Protocol</span>
         </Link>
         <div className="flex items-center space-x-2">
-            <h1 className='text-2xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text font-bold mr-10'>
+            <h1 className='text-[20px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text font-bold mr-10'>
               💪 {Number(data)/1000000000000000000} POW tokens
             </h1>
             <Link href={linkHref}>

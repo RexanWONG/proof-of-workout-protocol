@@ -152,6 +152,9 @@ const Quest = () => {
                             <th scope="col" className="px-6 py-3">
                                 Challenger
                             </th>
+                            <th scope="col" className="px-6 py-3">
+                                POW transfered
+                            </th>
                         </tr>
                     </thead>
                     <tbody>

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 import { HiHome } from "react-icons/hi"
-import { BiSearch } from "react-icons/bi"
+import { PiTrophyFill } from "react-icons/pi"
 import Box from "./Box"
 import SidebarItem from "./SidebarItem"
 
@@ -23,10 +23,10 @@ const Sidebar: React.FC<SidebarProps> = ({
             active: pathname !== '/dashboard',
             href: '/dashboard'
         }, {
-            icon: BiSearch,
-            label: 'Search',
-            active: pathname === '/search',
-            href: '/search'
+            icon: PiTrophyFill,
+            label: 'My badges',
+            active: pathname === '/badges',
+            href: '/badges'
         }
     ], [])
 

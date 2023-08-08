@@ -63,7 +63,7 @@ const QuestChallengesLeaderboard: React.FC<QuestChallengesLeaderboardProps> = ({
           <td className="px-6 py-4 text-[18px]">{convertUnixTimestampInSecondsToHumanReadable(startTime)}</td>
           <td className="px-6 py-4 text-[18px] max-w-[150px]">{renderRemainingTime()}</td>
           <td className="px-6 py-4 text-[14px]">{truncateEthAddress(challenger)}</td>
-          <td className="px-6 py-4 text-[14px]">{Math.floor(computePowTokenRewards(stakedAmount, workoutDuration, difficulty))}</td>
+          <td className="px-6 py-4 text-[14px]">{Math.floor(computePowTokenRewards(stakedAmount, workoutDuration, difficulty))} POW</td>
           
          
       </tr>
