@@ -12,10 +12,6 @@ const Badges = () => {
     const { contract } = useContract(contractAddress);
     const { data: ownedItems, isLoading: ownedItemsLoading, error: ownedItemsError} = useOwnedNFTs(contract, address);
 
-    useEffect(() => {
-        console.log("Owned items : ", ownedItems) 
-    }, []);
-
     if (!address) return <div>No wallet connected</div>
     if (ownedItemsLoading) return <div className='flex items-center justify-center h-64 rounded-lg'><Loading /></div>;
     if (!ownedItems || ownedItemsError) return <div className='flex items-center justify-center h-64 rounded-lg'>NFT not found</div>;
