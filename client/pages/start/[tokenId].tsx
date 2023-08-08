@@ -60,7 +60,7 @@ const Start= () => {
             }
         }
 
-    }, [quests, isQuestsLoading, questsError]);
+    }, [quests, isQuestsLoading, questsError, tokenId]);
 
     return (
         <div className='flex flex-col min-h-screen bg-black'>

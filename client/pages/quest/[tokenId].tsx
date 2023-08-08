@@ -59,7 +59,7 @@ const Quest = () => {
         }
 
 
-    }, [quests, isQuestsLoading, questsError, questChallenges, isQuestChallengesLoading, questChallengesError, address]);
+    }, [quests, isQuestsLoading, questsError, questChallenges, isQuestChallengesLoading, questChallengesError, address, quest, tokenId]);
 
     return (
         <div className='flex flex-col min-h-screen bg-black'>

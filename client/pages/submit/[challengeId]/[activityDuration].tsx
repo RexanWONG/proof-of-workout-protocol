@@ -86,7 +86,7 @@ const FinalSubmitPage = () => {
         }
     }
     
-}, [quests, isQuestsLoading, questsError, questChallenges, isQuestChallengesLoading, questChallengesError, address]);
+}, [quests, isQuestsLoading, questsError, questChallenges, isQuestChallengesLoading, questChallengesError, address, challengeId]);
 
   const handleImageFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
