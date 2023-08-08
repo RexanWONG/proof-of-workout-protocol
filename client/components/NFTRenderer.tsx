@@ -47,8 +47,8 @@ const NFTRenderer: React.FC<NFTRendererProps> = ({ ownedItems }) =>  {
     return (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-10"> 
             {ownedItems.map((item) => 
-                <div>
-                    <div key={item.metadata.id} onClick={() => handleRowClick(Number(item.metadata.id))}>
+                <div key={item.metadata.id}>
+                    <div onClick={() => handleRowClick(Number(item.metadata.id))}>
                         <div className='transition-all duration-200 ease-in-out transform hover:scale-105 rounded-2xl overflow-hidden shadow-md'>
                             <ThirdwebNftMedia 
                                 metadata={item.metadata as any}   
