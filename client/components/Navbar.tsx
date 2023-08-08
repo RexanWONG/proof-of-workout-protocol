@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ linkHref, linkText }) => {
               <h1 className='text-[20px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text font-bold mr-10'>
                 💪 {Number(data)/1000000000000000000} POW tokens
               </h1>
-              <button onClick={addPowToMetamask} className='text-white text-[12px] hover:underline'>Add POW into your metamask</button>
+              <button onClick={addPowToMetamask} className='text-white text-[12px] hover:underline hover:cursor-pointer'>Add POW into your metamask</button>
             </div>
             <Link href={linkHref}>
                 <button className='bg-white hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 hover:animate-text px-5 py-2 rounded-lg'>

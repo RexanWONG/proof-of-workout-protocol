@@ -46,7 +46,7 @@ const QuestLeaderboard: React.FC<QuestLeaderboardProps> = ({
 
   return (
 
-      <tr onClick={handleRowClick} className="bg-gray-800 border-gray-800 hover:bg-gray-800/10">
+      <tr onClick={handleRowClick} className="bg-gray-800 border-gray-800 hover:bg-gray-800/10 hover:cursor-pointer">
           <th scope="row" className="px-6 py-6 font-bold text-white text-[20px]">
             {name}
           </th>
