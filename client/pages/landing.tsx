@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LandingDescription from '../components/LandingDescription';
-import { ConnectWallet } from "@thirdweb-dev/react";
 
 const Landing = () => {
 
   return (
-    <div className='flex flex-col justify-center items-center min-h-screen bg-black text-white'>
+    <div className='font-inter flex flex-col justify-center items-center min-h-screen bg-black text-white'>
         <div className='text-center max-w-[1000px]'>
             <LandingDescription />
 

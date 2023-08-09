@@ -1,9 +1,12 @@
 import React from 'react'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 const LandingDescription = () => {
   return (
-    <div>
-        <h1 className='text-8xl font-[900] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text mb-4'>
+    <div className={inter.className}>
+        <h1 className='text-8xl font-black bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text mb-4'>
             Proof of Workout Protocol <span className='text-white'>💪</span>
         </h1>
         <p className='text-[34px] text-white mb-6'>
