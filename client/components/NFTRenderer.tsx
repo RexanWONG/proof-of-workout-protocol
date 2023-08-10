@@ -25,7 +25,7 @@ const NFTRenderer: React.FC<NFTRendererProps> = ({ ownedItems }) =>  {
               params: {
                 type: 'ERC721',
                 options: {
-                  address: '0xD2FD5B0Ed1d8c79E03a40ED1caD6e9fcDc39d3F4',
+                  address: '0xECA34040B4E0B9b41f66dF9153c58f44a4836301',
                   tokenId: id, 
                 },
               },

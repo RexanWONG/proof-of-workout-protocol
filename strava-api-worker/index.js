@@ -121,7 +121,7 @@ app.get('/activity-duration', async (req, res) => {
   }
 });
 
-const allowedOrigins = ['http://localhost:3001/', 'http://localhost:3001/submit'];
+const allowedOrigins = ['http://localhost:3001/', 'http://localhost:3001/submit', 'https://proof-of-workout-protocol-cosensys.vercel.app/submit'];
 
 app.use(cors({
   origin: function (origin, callback) {

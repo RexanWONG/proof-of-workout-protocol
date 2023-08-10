@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ linkHref, linkText }) => {
 
   const { data, isLoading, error } = useContractRead(contract, "getBalanceOfAddress", [address]);
 
-  const tokenAddress = '0x92DFBD87ec23120223593E903A5e753772E4039e';
+  const tokenAddress = '0x359B573359DDaF99856F2F036894A5DaD30d55C4';
   const tokenSymbol = 'POW';
   const tokenDecimals = 18;
   const tokenImage = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvideos%2Fmuscle-emoji&psig=AOvVaw2DK0Hhe3lo-ErwDP1NhkHH&ust=1691563045629000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKC4ysW5zIADFQAAAAAdAAAAABAY';

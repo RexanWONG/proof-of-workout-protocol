@@ -1,5 +1,5 @@
 import abi_data from './QuestManager.json'; 
 
 export const abi = abi_data.abi;
-export const contractAddress = '0xD2FD5B0Ed1d8c79E03a40ED1caD6e9fcDc39d3F4';
+export const contractAddress = '0xECA34040B4E0B9b41f66dF9153c58f44a4836301';
 

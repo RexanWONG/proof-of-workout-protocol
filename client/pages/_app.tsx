@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
-import { Sepolia } from "@thirdweb-dev/chains"
+import { LineaTestnet } from "@thirdweb-dev/chains"
 import Sidebar from "../components/Sidebar";
 import { Inter } from 'next/font/google'
 
@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-      <ThirdwebProvider activeChain={Sepolia}>
+      <ThirdwebProvider activeChain={LineaTestnet}>
         <Sidebar>
           <Component className={inter.className} {...pageProps} />
         </Sidebar>

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Sepolia : 0x92DFBD87ec23120223593E903A5e753772E4039e
+// Linea Testnet : 0x359B573359DDaF99856F2F036894A5DaD30d55C4
 pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";

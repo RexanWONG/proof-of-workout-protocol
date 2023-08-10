@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { contractAddress } from '../constants/QuestManager/questManager';
 
