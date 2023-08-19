@@ -1,15 +1,14 @@
 // SPDX-License-Identifier: MIT
-// Linea Testnet : 0xECA34040B4E0B9b41f66dF9153c58f44a4836301       
+// Linea Testnet : 0x09778c274f6d5E8D39eFA14f5169f20C400D5A8D
 pragma solidity 0.8.17;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "../lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
+import "../lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol";
+import "../lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "../lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "../lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "../lib/openzeppelin-contracts/contracts/utils/Counters.sol";
+import "../lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 
 import "./ProofOfWorkoutToken.sol";
 
@@ -20,7 +19,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Proof of Workout Protocol", "POWP") {
+    constructor() ERC721("Proof of Workout Protocol ", "POWP") {
         _powToken = ProofOfWorkoutToken(0x359B573359DDaF99856F2F036894A5DaD30d55C4);
     } 
 
@@ -49,6 +48,7 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         uint256 stakeAmount;
         uint256 startTime;
         bool completed;
+        bytes32 attestationUid;
     }
 
     mapping(uint256 => Quest) public quests;
@@ -122,12 +122,12 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
 
         uint256 powTokenReward = _powToken.computePowTokenReward(
             questChallenge.stakeAmount, 
-            questChallenge.workoutDuration, 
+            questChallenge.workoutDuration,  
             quest.questDifficulty  
         );
 
-        _safeMint(msg.sender, quest.tokenId);
-        _setTokenURI(quest.tokenId, _metadataURI);
+        _safeMint(msg.sender, questChallenge.challengeId);
+        _setTokenURI(questChallenge.challengeId, _metadataURI);
 
         payable(msg.sender).transfer(questChallenge.stakeAmount);
         _powToken.mintFromQuestCompletion(msg.sender, powTokenReward);
@@ -172,6 +172,12 @@ contract QuestManager is ERC721, ERC721Enumerable, ERC721URIStorage, IERC721Rece
         }
         
         return allQuestChallenges;
+    }
+
+    function getAttestationUidFromQuestChallenge(uint256 _challengeId) public view returns (bytes32) {
+        QuestChallenges storage questChallenge = questChallenges[_challengeId];
+
+        return questChallenge.attestationUid;
     }
 
     // The following functions are overrides required by Solidity.

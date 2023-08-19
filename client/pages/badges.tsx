@@ -14,7 +14,6 @@ const Badges = () => {
     if (!address) return <div>No wallet connected</div>
     if (ownedItemsLoading) return <div className='flex items-center justify-center h-64 rounded-lg'><Loading /></div>;
     if (!ownedItems || ownedItemsError) return <div className='flex items-center justify-center h-64 rounded-lg'>NFT not found</div>;
-    
 
     return (
         <div className='flex flex-col min-h-screen bg-black'>
@@ -32,4 +31,4 @@ const Badges = () => {
     )
 }
 
-export default Badges
+export default Badges 
