@@ -3,7 +3,7 @@
 ## Proof of Cosensys Products : 
 1. Infura - to upload the badge image onto Infura's ipfs - Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/c25d5ec9c636e2595daceaf6ff64cd6d963917e4/client/pages/submit/%5BchallengeId%5D/%5BactivityDuration%5D.tsx#L53
 
-2. Linea - deploy Proof of Workout Protocol's POW token and main contract onto Linea - Proof : https://explorer.goerli.linea.build/address/0x09778c274f6d5E8D39eFA14f5169f20C400D5A8D https://explorer.goerli.linea.build/address/0x359B573359DDaF99856F2F036894A5DaD30d55C4
+2. Linea - deploy Proof of Workout Protocol's POW token and main contract onto Linea - Proof : QuestManager.sol : https://explorer.goerli.linea.build/address/0x09778c274f6d5E8D39eFA14f5169f20C400D5A8D ProofOfWorkoutToken.sol : https://explorer.goerli.linea.build/address/0x359B573359DDaF99856F2F036894A5DaD30d55C4
 
 3. Metamask SDK - to allow the user to add the NFT into their Metamask wallet and add the POW token into their wallet - Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/7c652934413572f6219486e32242234f8fe29e74/client/components/NFTRenderer.tsx#L20
 
