@@ -1,5 +1,8 @@
 # Proof-of-workout-protocol
 
+## Proof of Cosensys Products : 
+1. Infura - to upload the badge image onto Infura's ipfs (Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/c25d5ec9c636e2595daceaf6ff64cd6d963917e4/client/pages/submit/%5BchallengeId%5D/%5BactivityDuration%5D.tsx#L53)
+
 ## 📜 Intro 
 In a world where couches have become our new best friends and our fingers are more accustomed to swiping screens than lifting dumbbells, staying active has turned into a battle of willpower against the siren call of Netflix and cozy blankets. We've all had those ambitious moments where we declare, "I'm going to hit the gym every day and get buff!" But let's be real, it's super hard to commit ourselves to any fitness related challenges. As a result, maintaining regular physical activity is a challenge.
 
@@ -17,7 +20,7 @@ Now, it’s time to do a workout. To do a workout, you must record your workout 
 
 After recording a workout that meets the requirements on Strava, users can then go to their active quest challenge and submit this challenge for the quest. The user would connect their Strava account with the dApp, then select the workout they just did. Now, they can submit their challenge to the quest, and their challenge would be marked as completed!
 
-When a quest is completed, the user is rewarded. They are rewarded with 4 things : 1. their staked ETH will be sent back to them, 2. They get to mint a sexy NFT ‘badge’ that commemorates that they completed a quest, 3. they get an attestation on-chain, on Ethereum Attestation Service, and 4. They will win some POW tokens! With these incentives that users can potentially get for completing challenges to quests, they would be more incentivised to do workouts and get healthy!
+When a quest is completed, the user is rewarded. They are rewarded with 4 things : 1. their staked ETH will be sent back to them, 2. They get to mint a sexy NFT ‘badge’ that commemorates that they completed a quest, and 3. They will win some POW tokens! With these incentives that users can potentially get for completing challenges to quests, they would be more incentivised to do workouts and get healthy!
 
 Hold up, but what are POW tokens? The POW token, an ERC20 token, serves as a pivotal element within the dApp's framework, functioning as both an incentive and a scoring metric for the leaderboard. The Proof of Workout (POW) tokens are used as in-game incentives, for granting access to more challenging workout quests with commensurate higher rewards, and more. This incentive structure is bolstered by the following formula, ensuring that tougher quests yield greater amounts of POW tokens, thereby compelling users to enthusiastically partake in and accomplish these undertakings:
 
