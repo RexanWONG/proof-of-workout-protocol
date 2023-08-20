@@ -9,7 +9,6 @@
 
 4. Thirdweb - Connecting wallets, interacting with the smart contract - Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/main/client/pages/_app.tsx
 
-
 ## 📜 Intro 
 In a world where couches have become our new best friends and our fingers are more accustomed to swiping screens than lifting dumbbells, staying active has turned into a battle of willpower against the siren call of Netflix and cozy blankets. We've all had those ambitious moments where we declare, "I'm going to hit the gym every day and get buff!" But let's be real, it's super hard to commit ourselves to any fitness related challenges. As a result, maintaining regular physical activity is a challenge.
 
@@ -37,6 +36,9 @@ where difficulty score is a multiplier factor based on the difficulty level of t
 
 This formula ensures that the users who take up more challenging and longer quests, and stake higher amounts of ETH, are rewarded more POW tokens. 
 
+## 🔨Tech Stack
+Solidity, Foundry, Thirdweb, Typescript, Javascript, ReactJS, NextJS, NodeJS, Tailiwndcss, ExpressJS, Ngrok, StravaAPI
+
 ## 🎯 Product market fit
 The POW dApp addresses the growing market need for engaging and effective fitness solutions. Given the popularity of fitness gamification and the novelty of integrating fitness with blockchain technology, the dApp has significant potential for mass adoption.
  
@@ -59,6 +61,6 @@ Such partnerships can generate valuable brand exposure and customer loyalty. The
 ## 🎨 Design
 The fusion of digital and physical realities through the POW dApp represents a novel approach to incentivizing fitness. It stands as a stepping stone for future projects at the intersection of blockchain and health/wellness.
 
-## 🛠️ Execution
+## 🚀 Execution
 The dApp effectively integrates various products and tools into a cohesive and exciting platform. Ethereum is used for account management and staking, the custom POW token for rewards, and potential future integrations with fitness tracking devices or apps, all supporting the idea without detracting from the user experience.
 
