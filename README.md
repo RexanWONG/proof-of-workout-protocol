@@ -4,10 +4,7 @@
 1. [Intro](#intro)
 2. [Product market fit](#product-market-fit)
 3. [Scalability](#scalability)
-   - [Future Utility: PowMogis](#future-utility-powmogis)
-   - [Decentralized Autonomous Organization (DAO)](#decentralized-autonomous-organization-dao)
 4. [Investability](#investability)
-   - [Partnerships and Integrations](#partnerships-and-integrations)
 5. [Design](#design)
 6. [Execution](#execution)
 
