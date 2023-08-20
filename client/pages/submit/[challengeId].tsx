@@ -27,7 +27,7 @@ const Submit = () => {
     const { challengeId } = router.query; 
 
     const STRAVA_CLIENT_ID = process.env.NEXT_STRAVA_CLIENT_ID  
-    const STRAVA_OAUTH_LINK = `https://www.strava.com/oauth/authorize?client_id=112344&response_type=code&redirect_uri=https://proof-of-workout-protocol-supahack-base-goerli.vercel.app/submit/${challengeId}&approval_prompt=force&scope=activity:read`
+    const STRAVA_OAUTH_LINK = `https://www.strava.com/oauth/authorize?client_id=112344&response_type=code&redirect_uri=https://proof-of-workout-protocol-cosensys.vercel.app/submit/${challengeId}&approval_prompt=force&scope=activity:read`
     
     const [isLoading, setIsLoading] = useState(false)
     const [activitiesList, setActivitiesList] = useState<ActivitiesResponse | null>(null);
