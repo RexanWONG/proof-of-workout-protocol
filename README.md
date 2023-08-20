@@ -38,7 +38,7 @@ where difficulty score is a multiplier factor based on the difficulty level of t
 This formula ensures that the users who take up more challenging and longer quests, and stake higher amounts of ETH, are rewarded more POW tokens. 
 
 ## 🔨Tech Stack
-Solidity, Foundry, Thirdweb, Typescript, Javascript, ReactJS, NextJS, NodeJS, Tailiwndcss, ExpressJS, Ngrok, StravaAPI
+Solidity, Foundry, Thirdweb, Typescript, Javascript, ReactJS, NextJS, NodeJS, Tailiwndcss, ExpressJS, Ngrok, StravaAPI, Linea Testnet
 
 ## 🎯 Product market fit
 The POW dApp addresses the growing market need for engaging and effective fitness solutions. Given the popularity of fitness gamification and the novelty of integrating fitness with blockchain technology, the dApp has significant potential for mass adoption.
