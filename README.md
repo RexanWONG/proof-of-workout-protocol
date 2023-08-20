@@ -1,4 +1,4 @@
-# Proof-of-workout-protocol-supahack
+# Proof-of-workout-protocol
 
 In a world where couches have become our new best friends and our fingers are more accustomed to swiping screens than lifting dumbbells, staying active has turned into a battle of willpower against the siren call of Netflix and cozy blankets. We've all had those ambitious moments where we declare, "I'm going to hit the gym every day and get buff!" But let's be real, it's super hard to commit ourselves to any fitness related challenges. As a result, maintaining regular physical activity is a challenge.
 
