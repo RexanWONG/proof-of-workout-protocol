@@ -7,6 +7,7 @@
 
 3. Metamask SDK - to allow the user to add the NFT into their Metamask wallet and add the POW token into their wallet - Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/7c652934413572f6219486e32242234f8fe29e74/client/components/NFTRenderer.tsx#L20
 
+4. Thirdweb - Connecting wallets, interacting with the smart contract - Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/main/client/pages/_app.tsx
 
 
 ## 📜 Intro 
