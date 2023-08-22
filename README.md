@@ -37,6 +37,8 @@ where difficulty score is a multiplier factor based on the difficulty level of t
 
 This formula ensures that the users who take up more challenging and longer quests, and stake higher amounts of ETH, are rewarded more POW tokens. 
 
+If you want to learn more about the POW token's tokenomics, check it out here : https://docs.google.com/document/d/1uV6p4-kGj8GniSGRXEhgdiXNddj3pLJ9ImpHQoA9oDM/edit?usp=sharing
+
 <img width="1025" alt="Screenshot 2023-08-21 at 8 22 58 PM" src="https://github.com/RexanWONG/proof-of-workout-protocol/assets/96183717/922a00b8-e2a1-4b9b-93f6-7a49983ece49">
 
 
