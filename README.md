@@ -1,6 +1,8 @@
 # 💪 Proof-of-workout-protocol
 A project created for Cosensys' Not Another Virtual Hackathon's (NAVH) 'Make a dApp that slaps, no cap' and 'IYKYK Linea edition' bounty, by Rexan Wong (linktr.ee/rexanwong).
 
+# 🏆 Linea bounty winner
+
 ## 📦 Proof of Cosensys Products : 
 1. Infura - to upload the badge image onto Infura's ipfs - Proof : https://github.com/RexanWONG/proof-of-workout-protocol/blob/c25d5ec9c636e2595daceaf6ff64cd6d963917e4/client/pages/submit/%5BchallengeId%5D/%5BactivityDuration%5D.tsx#L53
 
